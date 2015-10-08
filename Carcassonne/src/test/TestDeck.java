@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import code.Deck;
-import code.Edge;
-import code.Feature;
 
 
 public class TestDeck {

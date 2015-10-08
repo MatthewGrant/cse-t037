@@ -1,0 +1,64 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.awt.Point;
+
+import org.junit.Test;
+
+import code.BaseTile;
+import code.Board;
+import code.Edge;
+import code.Feature;
+
+public class TestBoard {
+
+	Board board = new Board();
+	BaseTile testTile1 = new BaseTile(
+		new Edge(Feature.CITY, Feature.CITY, Feature.CITY),//Top edge
+		new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), //Bottom edge
+		new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),//Left Edge
+		new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD));//Right Edge
+	
+	BaseTile testTile2 = new BaseTile(
+			new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),//Top edge
+			new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), //Bottom edge
+			new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),//Left Edge
+			new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD));//Right Edge
+				
+	
+
+	@Test
+	public void canBePlacedTest1() {
+		boolean expected = false;
+		boolean actual = board.canBePlaced(new Point(0,0),testTile1);
+		assertEquals(expected,actual);	
+	}
+	@Test
+	public void canBePlacedTest2() {
+		boolean expected = false;
+		boolean actual = board.canBePlaced(new Point(1,0),testTile1);
+		assertEquals(expected,actual);	
+	}
+	@Test
+	public void canBePlacedTest3() {
+		boolean expected = true;
+		boolean actual = board.canBePlaced(new Point(-1,0),testTile2);
+		assertEquals(expected,actual);	
+	}
+	/* --------------------------------------------------------   */
+	
+	@Test
+	public void adjacentTileTest() {
+		BaseTile[] tiles = board.adjacentTile(new Point(0,0));
+		
+		
+	}
+	
+	@Test
+	public void placeTileTest() {
+		fail("Not yet implemented");
+	}
+	
+	
+}

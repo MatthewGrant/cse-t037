@@ -47,7 +47,7 @@ public class BaseTile {
 		this.top = this.left;
 		this.left = this.bottom;
 		this.bottom = this.right;
-		this.left = temp;
+		this.right = temp;
 			
 	}
 	
