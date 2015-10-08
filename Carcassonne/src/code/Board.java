@@ -6,10 +6,24 @@ import java.awt.Point;
 
 
 public class Board {
-	private HashMap<Point, Integer> _board;
+	private HashMap<Point, BaseTile> _board;
+	private Deck _deck;
 	
-	public boardl() {
+	public Board() {
 		// pointsOnBoard();
-		_model = new HashMap<Point, Integer>();
+		_board = new HashMap<Point, BaseTile>();
+		_deck = new Deck();
+		
+		_board.put(new Point(0,0),new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY)));
+		
+		
+		
+		
+		
+		
+		
 
 }
