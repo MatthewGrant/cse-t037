@@ -1,0 +1,38 @@
+package test;
+
+import static org.junit.Assert.fail;
+
+import java.awt.Point;
+
+import org.junit.Test;
+
+import code.BaseTile;
+import code.Board;
+
+public class TestBoard {
+
+	Board board = new Board();
+	
+	
+	 
+	
+
+	@Test
+	public void canBePlacedTest() {
+		
+		BaseTile tile = board.draw();
+		Boolean actual = board.canBePlaced(new Point(0,0),tile);
+	}
+	
+	@Test
+	public void adjacentTileTest() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void placeTest() {
+		fail("Not yet implemented");
+	}
+	
+	
+}

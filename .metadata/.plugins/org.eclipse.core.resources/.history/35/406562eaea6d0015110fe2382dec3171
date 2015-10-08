@@ -70,23 +70,8 @@ public class TestBoard {
 	// Tests for adjacent tile test method
 	@Test
 	public void adjacentTileTest1() {
+		BaseTile[] tiles = board.adjacentTile(new Point(0,0));
 		
-		board.place((new Point(-1,0)), testTile2);
-		testTile1.RotateLeft();
-		board.place((new Point(0,-1)), testTile1);
-		
-		BaseTile[] expected = {null,null,testTile1,testTile2};
-		BaseTile[] actual = board.adjacentTile(new Point(0,0));
-		
-		boolean compare = true;
-		for(int i = 0; i < actual.length;i++){
-			System.out.println(actual[i]);
-			if( actual[i] != expected[i]){
-				compare = false;
-				
-			}
-		}
-		assertTrue("fail",compare);
 		
 	}
 	
