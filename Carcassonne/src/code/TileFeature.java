@@ -18,6 +18,23 @@ public abstract class TileFeature {
 	    this.section2 = feature2;
 	    this.section3 = feature3;
 	}
+
+	public Feature getSection1() {
+		return section1;
+	}
+
+	public Feature getSection2() {
+		return section2;
+	}
+
+	public Feature getSection3() {
+		return section3;
+	}
+	
+	
+	
+	
+	
 	
 	
 }
