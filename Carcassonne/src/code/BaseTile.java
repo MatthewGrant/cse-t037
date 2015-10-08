@@ -9,7 +9,6 @@ public class BaseTile {
 	
 	public BaseTile(){
 		
-		
 	}
 
 	/**
