@@ -127,5 +127,11 @@ public class Board {
 	}
 	
 	
-
+	//Draw tile method 
+	public BaseTile draw(){
+		return _deck.getNextTile();
+	}
+	
+	
+	
 }
