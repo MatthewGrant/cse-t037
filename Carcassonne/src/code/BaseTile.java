@@ -29,7 +29,7 @@ public class BaseTile {
 	}
 	
 	/**
-	 * this is to rotate the tile to the left so that you can line up another edge with the 
+	 * this is to rotate the tile to the left so that you can line up another edge with the first tile
 	 */
 	public void RotateLeft(){
 		Edge temp = this.top;
@@ -41,10 +41,9 @@ public class BaseTile {
 	}
 	
 	/**
-	 * 
+	 * this rotates the tiles to the right to that you can line up anther edge with the first tile
 	 */
 	public void RotateRight(){
-		//the oppeset of rotate left
 		Edge temp = this.top;
 		this.top = this.left;
 		this.left = this.bottom;

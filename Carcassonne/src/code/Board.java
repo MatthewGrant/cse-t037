@@ -9,8 +9,11 @@ public class Board {
 	private HashMap<Point, BaseTile> _board;
 	private Deck _deck;
 	
+	/**
+	 * creating a board that is inf and putting the first tile on the board 
+	 */
 	public Board() {
-		// pointsOnBoard();
+		
 		_board = new HashMap<Point, BaseTile>();
 		_deck = new Deck();
 		
