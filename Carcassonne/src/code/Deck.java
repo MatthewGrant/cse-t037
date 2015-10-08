@@ -393,14 +393,22 @@ public class Deck {
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD)));
 	
-	Collections.shuffle(_deck);
+	Collections.shuffle(_deck);//it is mixing up the deck 
 	}
 	
 	
+	/**
+	 * tell us how many tiles are in the deck
+	 * @return the size of the deck
+	 */
 	public int getTilesRemaning(){
 		return _deck.size();
 	}
 	
+	/**
+	 *this removes a tile from the deck  
+	 * @return the tile you just took out of th edeck
+	 */
 	public BaseTile getNextTile(){
 		if(getTilesRemaning() > 0){
 			return _deck.remove(0);

@@ -54,7 +54,7 @@ public class BaseTile {
 	
 	
 	
-//this is the getters
+	//this is the getters
 	/**
 	 * @return the top edge of the tile
 	 */
@@ -84,8 +84,4 @@ public class BaseTile {
 	}
 	
 }
-
-
-
-
 
