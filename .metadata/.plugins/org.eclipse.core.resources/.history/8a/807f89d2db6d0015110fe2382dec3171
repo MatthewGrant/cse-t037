@@ -1,0 +1,30 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import code.BaseTile;
+import code.Edge;
+import code.Feature;
+
+public class TestBaseTile {
+
+	@Test
+	public void RotateLtest() {
+		
+		BaseTile tile = new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD));
+		
+		assertTrue(new Edge(Feature.FIELD,Feature.FIELD,Feature.FIELD ).equals(tile.getTop()));
+		tile.getBottom();
+		tile.getRight();
+		tile.getLeft();
+		
+	
+		
+	}
+
+}

@@ -1,0 +1,23 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import code.Deck;
+import code.Edge;
+import code.Feature;
+
+public class TestDeck {
+
+	@Test
+	public void deckTest() {
+	    
+		Deck deck = new Deck();
+		
+		assertEquals(71,deck.getTilesRemaning());
+	   
+	  }
+	
+
+}
