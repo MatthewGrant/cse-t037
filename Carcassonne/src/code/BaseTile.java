@@ -12,6 +12,13 @@ public class BaseTile {
 		
 	}
 
+	/**
+	 * 
+	 * @param Top
+	 * @param Bottom
+	 * @param Left
+	 * @param Right
+	 */
 	public BaseTile(Edge Top, Edge Bottom, Edge Left,Edge Right){
 		this.top = Top;
 		this.bottom = Bottom;
@@ -21,6 +28,9 @@ public class BaseTile {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public void RotateLeft(){
 		Edge temp = this.top;
 		this.top = this.right;
@@ -30,6 +40,9 @@ public class BaseTile {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public void RotateRight(){
 		//the oppeset of rotate left
 		Edge temp = this.top;
@@ -48,18 +61,30 @@ public class BaseTile {
 	
 	
 //this is the getters
+	/**
+	 * @return the top edge
+	 */
 	public Edge getTop() {
 		return top;
 	}
 
+	/**
+	 * @return
+	 */
 	public Edge getBottom() {
 		return bottom;
 	}
 
+	/**
+	 * @return
+	 */
 	public Edge getLeft() {
 		return left;
 	}
 
+	/**
+	 * @return
+	 */
 	public Edge getRight() {
 		return right;
 	}
