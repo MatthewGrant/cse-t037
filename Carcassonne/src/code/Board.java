@@ -20,10 +20,6 @@ public class Board {
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY)));
 		
 		
-		
-		
-		
-		
-		
+	}
 
 }

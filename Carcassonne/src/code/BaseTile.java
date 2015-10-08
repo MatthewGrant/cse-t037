@@ -13,7 +13,7 @@ public class BaseTile {
 	}
 
 	/**
-	 * 
+	 * this is defining the outline of the tile
 	 * @param Top
 	 * @param Bottom
 	 * @param Left
@@ -29,7 +29,7 @@ public class BaseTile {
 	}
 	
 	/**
-	 * 
+	 * this is to rotate the tile to the left so that you can line up another edge with the 
 	 */
 	public void RotateLeft(){
 		Edge temp = this.top;
@@ -62,28 +62,28 @@ public class BaseTile {
 	
 //this is the getters
 	/**
-	 * @return the top edge
+	 * @return the top edge of the tile
 	 */
 	public Edge getTop() {
 		return top;
 	}
 
 	/**
-	 * @return
+	 * @return the bottom edge of the tile
 	 */
 	public Edge getBottom() {
 		return bottom;
 	}
 
 	/**
-	 * @return
+	 * @return the left edge of the tile
 	 */
 	public Edge getLeft() {
 		return left;
 	}
 
 	/**
-	 * @return
+	 * @return the right edge of the tile
 	 */
 	public Edge getRight() {
 		return right;
