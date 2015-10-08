@@ -3,7 +3,7 @@ package code;
 public class Edge extends TileFeature {
 	
 	
-	// constructor
+	
 	public Edge(Feature feature1, Feature feature2, Feature feature3){
 		super(feature1, feature2, feature3);
 		
@@ -24,4 +24,4 @@ public class Edge extends TileFeature {
 		return true; 
 	}
 	
-}//END class 
+} 
