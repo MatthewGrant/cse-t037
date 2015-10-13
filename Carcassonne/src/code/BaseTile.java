@@ -1,5 +1,9 @@
 package code;
 //this is the tile
+/**
+ * @author DEANNA
+ *
+ */
 public class BaseTile {
 	
 	Edge top = new Edge(null, null, null);
@@ -7,6 +11,9 @@ public class BaseTile {
 	Edge left = new Edge(null, null, null);
 	Edge right = new Edge(null, null, null);
 	
+	Feature center = null;
+		
+		
 	public BaseTile(){
 		
 	}
@@ -22,9 +29,25 @@ public class BaseTile {
 		this.top = Top;
 		this.bottom = Bottom;
 		this.left = Left;
+		this.right = Right;	
+	}
+	
+	
+	/**
+	 * this lets me put stuff in the center of the tile
+	 * @param Top
+	 * @param Bottom
+	 * @param Left
+	 * @param Right
+	 * @param Center
+	 * this is a over loaded method
+	 */
+	public BaseTile(Edge Top, Edge Bottom, Edge Left,Edge Right, Feature Center){
+		this.top = Top;
+		this.bottom = Bottom;
+		this.left = Left;
 		this.right = Right;
-		
-		
+		this.center = Center;	
 	}
 	
 	/**
@@ -82,5 +105,15 @@ public class BaseTile {
 		return right;
 	}
 	
+	/**
+	 * @return the center of the tile
+	 */
+	public Feature getCentert() {
+		return center;
+	}
+	
 }
+	
+
+
 

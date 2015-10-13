@@ -6,5 +6,5 @@ package code;
  *
  */
 public enum Feature {
-  ROAD, CITY, FIELD, ENDPOINT;
+  ROAD, CITY, FIELD, ENDPOINT,MONASTERY,SHEILD;
 }
