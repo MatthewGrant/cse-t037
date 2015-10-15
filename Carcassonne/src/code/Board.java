@@ -127,7 +127,11 @@ public class Board {
 	}
 	
 	
-	//Draw tile method 
+	 
+	/**
+	 * this is to drawa tile from the deck
+	 * @return the tile that you have just draw
+	 */
 	public BaseTile draw(){
 		return _deck.getNextTile();
 	}
