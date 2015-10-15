@@ -13,6 +13,9 @@ public class Edge extends TileFeature {
 	@Override 
 	public boolean equals(Object obj){
 		Edge edge = (Edge) obj;
+		if (obj == null){
+			return false;
+		}
 		if (edge.getSection1()!=getSection1()){
 			return false;
 		}

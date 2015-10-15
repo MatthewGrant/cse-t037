@@ -10,13 +10,9 @@ public class BaseTile {
 	Edge bottom = new Edge(null, null, null);
 	Edge left = new Edge(null, null, null);
 	Edge right = new Edge(null, null, null);
-	
-	Feature center = null;
+	Center center = new Center(null);
 		
 		
-	public BaseTile(){
-		
-	}
 
 	/**
 	 * this is defining the outline of the tile
@@ -42,7 +38,7 @@ public class BaseTile {
 	 * @param Center
 	 * this is a over loaded method
 	 */
-	public BaseTile(Edge Top, Edge Bottom, Edge Left,Edge Right, Feature Center){
+	public BaseTile(Edge Top, Edge Bottom, Edge Left,Edge Right, Center Center){
 		this.top = Top;
 		this.bottom = Bottom;
 		this.left = Left;
@@ -108,7 +104,7 @@ public class BaseTile {
 	/**
 	 * @return the center of the tile
 	 */
-	public Feature getCentert() {
+	public Center getCentert() {
 		return center;
 	}
 	

@@ -17,38 +17,38 @@ public class Deck {
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
-		        Feature.MONASTERY));
+		        new Center(Feature.MONASTERY)));
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
                 new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
-                Feature.MONASTERY));
+                new Center(Feature.MONASTERY)));
 		
 		// all side field but there is a church in the center//four tiles in the game
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
-                Feature.MONASTERY));
+                new Center(Feature.MONASTERY)));
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
-                Feature.MONASTERY));
+                new Center(Feature.MONASTERY)));
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
-                Feature.MONASTERY));
+                new Center(Feature.MONASTERY)));
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
-                Feature.MONASTERY));
+                new Center(Feature.MONASTERY)));
 		
 		//all sides city with a shield// one tile in game 
 		_deck.add(new BaseTile(new Edge(Feature.CITY, Feature.CITY, Feature.CITY), 
