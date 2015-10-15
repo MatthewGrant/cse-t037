@@ -1,25 +1,28 @@
 package code;
 
 public class Player {
-	  private final int id;
+	  public final int id;
+	  public static int nextID=1;
 	  private final String name;
 	  //private int score;
 	  private int numMeeples;
 	  private static final int MAXMEEPLES = 7;
 
 	  /**
-	   * Constructor for player.
+	   * Constructor for a player.
 	   * @param id the players id
 	   * @param name the players name
 	   */
-	  public Player(int id, String name) {
-	    this.id = id;
+	  public Player(String name) {
+	    this.id = nextID;
+	    nextID++;
 	    this.name = name;
 	    this.numMeeples = MAXMEEPLES;
 	  }
 
-	  /**
-	   * getter for id.
+
+	/**
+	   * get id.
 	   * @return id
 	   */
 	  public int getId() {
@@ -27,7 +30,7 @@ public class Player {
 	  }
 
 	  /**
-	   * getter for name.
+	   * get name.
 	   * @return name
 	   */
 	  public String getName() {
@@ -36,7 +39,7 @@ public class Player {
 	 
 
 	  /**
-	   * getter for numMeeples.
+	   * get numMeeples.
 	   * @return numMeeples
 	   */
 	  public int getNumMeeples() {
@@ -45,7 +48,7 @@ public class Player {
 	  	 
 
 	  /**
-	   * setter for numMeeples.
+	   * set numMeeples.
 	   * @param numMeeples what to set numMeeples to.
 	   */
 	  public void setNumMeeples(int numMeeples) {
@@ -53,7 +56,7 @@ public class Player {
 	  }
 
 	  
-	  // add methods for placeMeeple, takeMeeples
+	  // add methods for placeMeeple, takeMeeples counts
 
 	  @Override
 	  public boolean equals(Object obj) {
