@@ -27,6 +27,7 @@ public class Board {
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY)));
+		new View(this);//this is so we can run our game 
 		
 		
 	}
@@ -130,6 +131,7 @@ public class Board {
 		
 		if (canBePlaced(point,basetile)){
 			//check to see if the tile is placed at the boarded
+			draw();
 			_board.put(point, basetile);
 			if(_upper < point.y+1 ){
 				_upper = point.y+1;
@@ -143,15 +145,18 @@ public class Board {
 			if(_right < point.x+1 ){
 				_right = point.x+1;
 			}
-			//if (View =null){
-				
-			//}
+		
 			return true;
 		}
 		return false;
 	}
 	
-	
+	/**
+	 * @return
+	 */
+	public BaseTile nextTile(){
+		return _deck.nextTile();
+	}
 	 
 	/**
 	 * this is to draw a tile from the deck

@@ -33,6 +33,8 @@ if(players > 2 && players < 5){
 
 public static void main(String[] args){
 	//enter player names
+
+	new Board();//so we can see the baord
 	for (int i=0; i<args.length; i++) {
 		System.out.println("The player order is"+args[i]+"/");
 	//print player order

@@ -421,6 +421,12 @@ public class Deck {
 		}
 		return null; 
 	}
+	/**
+	 * @return
+	 */
+	public BaseTile nextTile(){
+		return _deck.get(0);
+	}
 	
 	
 	
