@@ -32,7 +32,15 @@ if(players > 2 && players < 5){
 
 
 public static void main(String[] args){
-Scanner scanner= new Scanner(System.in);
+	//enter player names
+	for (int i=0; i<args.length; i++) {
+		System.out.println("The player order is"+args[i]+"/");
+	//print player order
+	}
+	
+	
+			
+/*/			Scanner scanner= new Scanner(System.in);
 System.out.print("Enter your name:");
 //ask for their name
 String username= scanner.next();
@@ -43,5 +51,6 @@ int age= scanner.nextInt();
 //age input as int
 System.out.println(String.format("%s,  your age is %d",username,age));
 scanner.next();
+/*/
 }
 }
