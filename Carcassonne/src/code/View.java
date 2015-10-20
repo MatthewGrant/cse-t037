@@ -22,7 +22,7 @@ public class View implements Runnable {
 	 * the view for the board so you can see what you are playing 
 	 * @param m
 	 */
-	public View(Board m) {//Wrong i know working on it
+	public View(Board m) {
 		_board = m;
 		run();
 	}
@@ -30,12 +30,13 @@ public class View implements Runnable {
 	
 	/**
 	 * this updates the view when a new tile is plased on the board
+	 * this also places the first tile
 	 */
 	public void updateView(){
 		
 		//Setting the location of the buttons
 		JButton[][] buttons = new JButton[3][3];
-		for(int i =0; i<buttons.length  ; i++){// get the size for the coulems
+		for(int i =0; i<buttons.length  ; i++){// get the size of the coulems
 			for (int j =0; j<buttons[0].length ; j++){//get the size of the rows
 				buttons[i][j]= new JButton();
 				Point p;
@@ -43,17 +44,18 @@ public class View implements Runnable {
 				int y = ( _board.get_lower()+i);
 				p = new Point(x,y);
 				
-				
 				buttons[i][j].addActionListener(new ButtonListener(p,this));
 				_Top.add(buttons[i][j]);
 				
 				
+				//put  buttions on the lower half of the board 	to rotat the tiles 			
 				
 			}
+			//have the players name print out on the bottom part of the board
 		}
 		
 		
-		//increass the number of button i have if the tile is next to a borded this is in the 
+		 
 		_window.pack();
 	}
 

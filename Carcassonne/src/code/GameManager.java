@@ -35,8 +35,12 @@ public static void main(String[] args){
 	//enter player names
 
 	new Board();//so we can see the baord
+	
+	System.out.println("The player order is ");
 	for (int i=0; i<args.length; i++) {
-		System.out.println("The player order is"+args[i]+"/");
+		System.out.println("player " + i + " is " +args[i]);
+		
+		
 	//print player order
 	}
 	
