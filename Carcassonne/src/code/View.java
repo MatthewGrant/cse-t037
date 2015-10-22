@@ -23,8 +23,8 @@ public class View implements Runnable {
 	private JPanel _Bottom;// the bottom part of the frame
 	private Board _board;
 	private BufferedImage _pic;//the picert that will plased on the image
-	private JButton _Left;
-	private JButton _Center;
+	private JButton _Left;//the left button on the botton part of the screen
+	private JButton _Center;//this button has the 
 	private JButton _Right;
 	
 	
