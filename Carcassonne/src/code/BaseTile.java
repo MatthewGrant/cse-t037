@@ -14,8 +14,9 @@ public class BaseTile {
 	Edge right = new Edge(null, null, null);
 	Center center = new Center(null);
 	private Point point;
-		
-		
+	
+	// rotation variable 
+	private int rotation = 0; 	
 
 	/**
 	 * this is defining the outline of the tile
@@ -98,7 +99,11 @@ public class BaseTile {
 		this.right = this.bottom;
 		this.bottom =this.left;
 		this.left = temp;
-		
+		rotation--;
+		if(rotation < 0){
+			this.rotation = 3;
+		}
+		System.out.println(rotation);
 	}
 	
 	/**
@@ -110,7 +115,12 @@ public class BaseTile {
 		this.left = this.bottom;
 		this.bottom = this.right;
 		this.right = temp;
-			
+		rotation++;
+		if(rotation > 3){
+			this.rotation = 0;
+		}
+		System.out.println(rotation);
+		
 	}
 	
 	
@@ -156,6 +166,13 @@ public class BaseTile {
 	public Point getPoint() {
 		return point;
 	}
+
+
+	public int getRotation() {
+		return rotation;
+	}
+
+
 	
 	
 	
