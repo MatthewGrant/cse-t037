@@ -1,5 +1,9 @@
 package code;
+
+import java.awt.Point;
+
 //this is the tile
+<<<<<<< .merge_file_O2rOG5
 /**
  * @author DEANNA
  *
@@ -10,8 +14,22 @@ public class BaseTile {
 	private Edge bottom = new Edge(null, null, null);
 	private Edge left = new Edge(null, null, null);
 	private Edge right = new Edge(null, null, null);
+=======
+
+
+
+ public class BaseTile {
+	
+	Edge top = new Edge(null, null, null);
+	Edge bottom = new Edge(null, null, null);
+	Edge left = new Edge(null, null, null);
+	Edge right = new Edge(null, null, null);
+>>>>>>> .merge_file_csDB6B
 	Center center = new Center(null);
+	private Point point;
 		
+		
+
 	/**
 	 * this is defining the outline of the tile
 	 * @param Top
@@ -24,6 +42,8 @@ public class BaseTile {
 		this.bottom = Bottom;
 		this.left = Left;
 		this.right = Right;	
+		this.point = new Point(3,0); 
+		this.center = new Center(null);
 	}
 	
 	
@@ -41,7 +61,49 @@ public class BaseTile {
 		this.bottom = Bottom;
 		this.left = Left;
 		this.right = Right;
+<<<<<<< .merge_file_O2rOG5
 		this.center = Center;	
+=======
+		this.center = Center;
+		this.point = new Point(3,0); 
+	}
+	
+	/**
+	 * so i can add the point to the ones with the center
+	 * @param Top
+	 * @param Bottom
+	 * @param Left
+	 * @param Right
+	 * @param Center
+	 * @param p
+	 */
+	public BaseTile(Edge Top, Edge Bottom, Edge Left,Edge Right, Center Center, Point p){
+		this.top = Top;
+		this.bottom = Bottom;
+		this.left = Left;
+		this.right = Right;
+		this.center = Center;
+		this.point = p;
+	
+		
+	}
+	/**
+	 * so i can just add the point to the tile, with out a center
+	 * @param Top
+	 * @param Bottom
+	 * @param Left
+	 * @param Right
+	 * @param p
+	 */
+	public BaseTile(Edge Top, Edge Bottom, Edge Left,Edge Right,Point p){
+		this.top = Top;
+		this.bottom = Bottom;
+		this.left = Left;
+		this.right = Right;	
+		this.point = p; 
+		this.center = new Center(null);
+		
+>>>>>>> .merge_file_csDB6B
 	}
 	
 	/**
@@ -56,6 +118,8 @@ public class BaseTile {
 		
 	}
 	
+	
+	
 	/**
 	 * this rotates the tiles to the right to that you can line up anther edge with the first tile
 	 */
@@ -67,6 +131,7 @@ public class BaseTile {
 		this.right = temp;
 			
 	}
+	
 	
 	
 	//this is the getters
@@ -103,6 +168,12 @@ public class BaseTile {
 	 */
 	public Center getCentert() {
 		return center;
+	}
+	/**
+	 * @return the paoint at wich the image for the tile is locatioed
+	 */
+	public Point getPoint() {
+		return point;
 	}
 	
 }

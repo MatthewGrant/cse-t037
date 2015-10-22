@@ -150,6 +150,15 @@ public class Board {
 		}
 		return false;
 	}
+	/**
+	 * @param p the pint on the baord
+	 * @return whats at that point
+	 */
+	public BaseTile ifTileIsThere(Point p){
+		
+		return _board.get(p);
+		
+	}
 	
 	/**
 	 * @return
