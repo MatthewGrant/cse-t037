@@ -137,7 +137,7 @@ public class Board {
 			if(_lower > point.y-1 ){
 				_lower = point.y-1;
 			}
-			if(_left < point.x-1 ){
+			if(_left > point.x-1 ){
 				_left = point.x-1;
 			}
 			if(_right < point.x+1 ){

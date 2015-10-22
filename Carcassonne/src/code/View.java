@@ -8,10 +8,12 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 
 public class View implements Runnable {
@@ -43,10 +45,14 @@ public class View implements Runnable {
 	public void updateView(){
 		
 		_Top.removeAll();
-		JButton[][] buttons = new JButton[3][3];
+		
+		JButton[][] buttons = new JButton[(Math.abs(_board.get_lower()) + _board.get_upper())+1][(Math.abs(_board.get_left()) + _board.get_right())+1];
+		_Top.setLayout(new GridLayout(buttons.length,buttons[0].length));
 		for(int i =0; i<buttons.length  ; i++){// get the size of the coulems
 			for (int j =0; j<buttons[0].length ; j++){//get the size of the rows
 				buttons[i][j]= new JButton();
+				Border emptyBorder = BorderFactory.createEmptyBorder();
+				buttons[i][j].setBorder(emptyBorder);
 				Point p;
 				int x = (_board.get_left()+j);
 				int y = ( _board.get_lower()+i);
@@ -114,7 +120,7 @@ public class View implements Runnable {
 		_Top.setLayout(new GridLayout(3,3));
 		
 		_Bottom= new JPanel();
-		_Bottom.setLayout(new GridLayout(1,3));//sets the numnber of rows and columes
+		//_Bottom.setLayout(new GridLayout(1,3));//sets the numnber of rows and colume
 		
 		_Left = createButton(_Bottom);
 		_Center = createButton(_Bottom);

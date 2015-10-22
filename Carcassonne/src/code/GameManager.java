@@ -8,28 +8,29 @@ public class GameManager {
 
 
 
-public static void players(String[] args){
-Scanner scanner= new Scanner(System.in);	
-System.out.print("Enter the ammount of players");
-//ask for the amount of players 
-int players= scanner.nextInt();
-//players input as an Int
-if(players < 2){
-	System.out.print("Sorry, not enough players to play");
-	scanner.next();
-}
+//public static void players(String[] args){
+//Scanner scanner= new Scanner(System.in);	
+//System.out.print("Enter the ammount of players");
+////ask for the amount of players 
+//int players= scanner.nextInt();
+////players input as an Int
+//if(players < 2){
+//	System.out.print("Sorry, not enough players to play");
+//	scanner.next();
+//}
+//
+//if(players > 5){
+//	System.out.print("Sorry, too many players to play");
+//	scanner.next();
+//}
+//if(players > 2 && players < 5){
+//	System.out.print("Alright, lets Start! Now who goes first");
+//	scanner.next();
+//}
+//}
 
-if(players > 5){
-	System.out.print("Sorry, too many players to play");
-	scanner.next();
-}
-if(players > 2 && players < 5){
-	System.out.print("Alright, lets Start! Now who goes first");
-	scanner.next();
-}
-}
-
-
+//s.getnexttile == null
+//soutplrint('no more cards to be played')
 
 public static void main(String[] args){
 	//enter player names
@@ -38,7 +39,7 @@ public static void main(String[] args){
 	
 	System.out.println("The player order is ");
 	for (int i=0; i<args.length; i++) {
-		System.out.println("player " + i + " is " +args[i]);
+		System.out.println("player " + (i+1) + " is " +args[i]);
 		
 		
 	//print player order

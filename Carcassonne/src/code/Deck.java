@@ -14,10 +14,10 @@ public class Deck {
 		_deck = new ArrayList<BaseTile>(); //there are 72 because the stater tile is not inclued
 		
 		//road on the bottom. church in the center//two tile in game
-		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
-		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), //top
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),//bottom
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),//left
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),//right
 		        new Center(Feature.MONASTERY),new Point(0,0)));///fix all the tiles like this one
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
@@ -164,18 +164,18 @@ public class Deck {
 		
 		//road on top and left and city on the right//three tiles in the game
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
-		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),new Point (0,2)));
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
-		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),new Point (0,2)));
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
-		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),new Point (0,2)));
 		
 		//road on the top bottom and left and city on the right//three tiles in the game
