@@ -62,7 +62,6 @@ public class View implements Runnable {
 					buttons[i][j].setIcon(ico);
 					
 				}
-				
 				 			
 			}
 			//puting stuff on the lower half of the board

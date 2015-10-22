@@ -42,9 +42,9 @@ public class Board {
 		BaseTile[] tiles = new BaseTile[4];
 		
 		//cheek to see if something is above it
-		tiles[0]=_board.get(new Point(point.x,point.y+1) );//top
+		tiles[0]=_board.get(new Point(point.x,point.y-1) );//top
 		tiles[1]=_board.get(new Point(point.x+1,point.y) );//right
-		tiles[2]=_board.get(new Point(point.x,point.y-1) );//bottom		
+		tiles[2]=_board.get(new Point(point.x,point.y+1) );//bottom		
 		tiles[3]=_board.get(new Point(point.x-1,point.y) );//left
 		
 		return tiles;
@@ -58,7 +58,6 @@ public class Board {
 	 * @return false if the tiles can't be place
 	 */
 	public boolean canBePlaced (Point point, BaseTile basetile){
-		
 		if (!_board.containsKey(point)){//cheeks to see if thire is a tiles at this point 
 			BaseTile[] adjacentTiles= adjacentTile(point);
 			boolean check1 = false;
@@ -75,7 +74,7 @@ public class Board {
 				//this might be wrong
 				if(adjacentTiles[0] != null){
 					
-					if(adjacentTiles[0].getBottom()==(basetile.getTop())){
+					if(adjacentTiles[0].getBottom().equals(basetile.getTop())){
 						end = true;
 						
 					}
@@ -84,8 +83,7 @@ public class Board {
 					}
 				}
 				if(adjacentTiles[1] != null){
-					
-					if(adjacentTiles[1].getLeft()==(basetile.getRight())){//changed from .euqles to ==
+					if(adjacentTiles[1].getLeft().equals(basetile.getRight())){//changed from .euqles to ==
 						end = true;
 						
 					}
@@ -95,7 +93,7 @@ public class Board {
 				}
 				if(adjacentTiles[2] != null){
 					
-					if(adjacentTiles[2].getTop()==(basetile.getBottom())){
+					if(adjacentTiles[2].getTop().equals(basetile.getBottom())){
 						end = true;
 						
 					}
@@ -105,7 +103,7 @@ public class Board {
 				}
 				if(adjacentTiles[3] != null){
 					
-					if(adjacentTiles[3].getRight()==(basetile.getLeft())){
+					if(adjacentTiles[3].getRight().equals(basetile.getLeft())){
 						end = true;
 						
 					}

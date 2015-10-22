@@ -17,6 +17,7 @@ public class ButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		_view.PlaceTile(_point);
 		_view.updateView();
+		System.out.println(_point);
 		
 	}
 
