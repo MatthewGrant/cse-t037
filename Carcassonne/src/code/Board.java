@@ -83,7 +83,7 @@ public class Board {
 					}
 				}
 				if(adjacentTiles[1] != null){
-					if(adjacentTiles[1].getLeft().equals(basetile.getRight())){
+					if(adjacentTiles[1].getLeft().equals(basetile.getRight())){//changed from .euqles to ==
 						end = true;
 						
 					}
