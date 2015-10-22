@@ -3,28 +3,17 @@ package code;
 import java.awt.Point;
 
 //this is the tile
-<<<<<<< .merge_file_O2rOG5
+
 /**
  * @author DEANNA
  *
  */
 public class BaseTile {
 	
-	private Edge top = new Edge(null, null, null);
-	private Edge bottom = new Edge(null, null, null);
-	private Edge left = new Edge(null, null, null);
-	private Edge right = new Edge(null, null, null);
-=======
-
-
-
- public class BaseTile {
-	
 	Edge top = new Edge(null, null, null);
 	Edge bottom = new Edge(null, null, null);
 	Edge left = new Edge(null, null, null);
 	Edge right = new Edge(null, null, null);
->>>>>>> .merge_file_csDB6B
 	Center center = new Center(null);
 	private Point point;
 		
@@ -61,10 +50,7 @@ public class BaseTile {
 		this.bottom = Bottom;
 		this.left = Left;
 		this.right = Right;
-<<<<<<< .merge_file_O2rOG5
 		this.center = Center;	
-=======
-		this.center = Center;
 		this.point = new Point(3,0); 
 	}
 	
@@ -103,7 +89,6 @@ public class BaseTile {
 		this.point = p; 
 		this.center = new Center(null);
 		
->>>>>>> .merge_file_csDB6B
 	}
 	
 	/**
