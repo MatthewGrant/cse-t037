@@ -3,7 +3,12 @@ package code;
 //this is wair you can see the board 
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +20,7 @@ public class View implements Runnable {
 	private JPanel _Top;//the top part of the frame
 	private JPanel _Bottom;// the bottom part of the frame
 	private Board _board;
+	private BufferedImage _pic;
 	
 	
 	
@@ -47,8 +53,16 @@ public class View implements Runnable {
 				buttons[i][j].addActionListener(new ButtonListener(p,this));
 				_Top.add(buttons[i][j]);
 				
+				BaseTile temp = _board.ifTileIsThere(p);
+				if( temp!= null ){
+					Point loc = temp.getPoint();
+					ImageIcon ico = new ImageIcon(_pic.getSubimage(loc.x*81, loc.y*81, 81, 81));
+					buttons[i][j].setIcon(ico);
+					
+				}
 				
-				//put  buttions on the lower half of the board 	to rotat the tiles 			
+				
+				//put  buttons on the lower half of the board 	to rotate the tiles 			
 				
 			}
 			//have the players name print out on the bottom part of the board
@@ -86,6 +100,13 @@ public class View implements Runnable {
 		_window.pack();
 		_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_window.setVisible(true);
+		try {
+			_pic = ImageIO.read(new File("resources/spritesheet.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(_pic);
 		updateView();
 }
 

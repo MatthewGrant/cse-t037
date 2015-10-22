@@ -11,7 +11,7 @@ import code.Feature;
 public class TestBaseTile {
 
 	//Create tile to test 
-	BaseTile tile = new BaseTile(
+	private BaseTile tile = new BaseTile(
 	new Edge(Feature.CITY, Feature.CITY, Feature.CITY),//Top edge
 	new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), //Bottom edge
 	new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),//Left Edge
