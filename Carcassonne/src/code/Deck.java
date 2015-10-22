@@ -119,20 +119,21 @@ public class Deck {
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),new Point (1,1)));
 		
 		//city on the left and right but not though the center//three tiles in the game 
-		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		_deck.add(new BaseTile(new Edge(Feature.CITY, Feature.CITY, Feature.CITY), 
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),
-		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),new Point (2,1)));
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),new Point (2,1)));
 		
-		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		_deck.add(new BaseTile(new Edge(Feature.CITY, Feature.CITY, Feature.CITY), 
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),
-		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),new Point (2,1)));
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),new Point (2,1)));
 		
-		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		_deck.add(new BaseTile(new Edge(Feature.CITY, Feature.CITY, Feature.CITY), 
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),
-		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),new Point (2,1)));
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),new Point (2,1)));
+		
 		
 		//city on the bottom and right side but not though center// two tiles in the game
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
@@ -185,12 +186,12 @@ public class Deck {
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),new Point (1,2)));
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),new Point (1,2)));
 		
 		//city top and left and it has a sheild. field on the bottom and right//two tiles in the game
@@ -222,20 +223,22 @@ public class Deck {
 		
 		//city top and left road on the bottom and right it also has a sheild//two tiles in the game
 		_deck.add(new BaseTile(new Edge(Feature.CITY, Feature.CITY, Feature.CITY), 
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),new Point (4,2)));
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),new Point (4,2)));
 		
 		_deck.add(new BaseTile(new Edge(Feature.CITY, Feature.CITY, Feature.CITY), 
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),new Point (4,2)));
 		
+		
+		
 		//city top and left road on the bottom and right//three tiles in the game
 		_deck.add(new BaseTile(new Edge(Feature.CITY, Feature.CITY, Feature.CITY), 
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),
-		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),new Point (0,3)));
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),new Point (0,3)));
 				
 		_deck.add(new BaseTile(new Edge(Feature.CITY, Feature.CITY, Feature.CITY), 
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),

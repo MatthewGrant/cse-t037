@@ -65,9 +65,7 @@ public class View implements Runnable {
 				 			
 			}
 			//puting stuff on the lower half of the board
-			//updateButton(_Left,1,0);
-			//updateButton(_Center,1,1);
-			//updateButton(_Right,1,2);
+			
 			
 			_Left.setText("Rotate Tile Left");
 			BaseTile temp = _board.nextTile();
@@ -81,10 +79,7 @@ public class View implements Runnable {
 		_window.pack();
 	}
 
-	//private void updateButton(JButton b, int row, int col) {
-		// TODO Auto-generated method stub
-		
-	//}
+	
 
 
 	/**
