@@ -28,7 +28,7 @@ public abstract class TileFeature {
 	    this.center = null;
 	 
 	    
-	    //How to add meeple to a single feature?
+	    //How to add meeple to a single feature
 	    this.meepleCent = null;
 	    this.meepleSec1 = null;
 	    this.meepleSec2  = null;
@@ -47,9 +47,7 @@ public abstract class TileFeature {
 		
 		 //How to add meeple to a single feature?
 	    this.meepleCent = null;
-	    this.meepleSec1 = null;
-	    this.meepleSec2  = null;
-	    this.meepleSec3  = null;
+	
 	}
 
 	public Feature getSection1() {
@@ -67,6 +65,34 @@ public abstract class TileFeature {
 	public Feature getCenter(){
 		return center; 
 	}
+	
+	// One? method to see if feature has a meeple on it
+	public boolean hasMeepleSection1() {
+	    if (meepleSec1 == null) {
+	      return false;
+	    }
+	    return true;
+	  }
+	
+	public boolean hasMeepleSection2() {
+	    if (meepleSec2 == null) {
+	      return false;
+	    }
+	    return true;
+	  }
+	
+	public boolean hasMeepleSection3() {
+	    if (meepleSec3 == null) {
+	      return false;
+	    }
+	    return true;
+	  }
+	
+	
+	//set meeple on feature
+	
+	
+	// remove meeple from feature 
 	
 	
 	
