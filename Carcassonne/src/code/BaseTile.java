@@ -4,11 +4,9 @@ import java.awt.Point;
 
 //this is the tile
 
-/**
- * @author DEANNA
- *
- */
+
 public class BaseTile {
+
 	
 	Edge top = new Edge(null, null, null);
 	Edge bottom = new Edge(null, null, null);
@@ -103,8 +101,6 @@ public class BaseTile {
 		
 	}
 	
-	
-	
 	/**
 	 * this rotates the tiles to the right to that you can line up anther edge with the first tile
 	 */
@@ -155,14 +151,12 @@ public class BaseTile {
 		return center;
 	}
 	/**
-	 * @return the paoint at wich the image for the tile is locatioed
+	 * @return the point at which the image for the tile is located
 	 */
 	public Point getPoint() {
 		return point;
 	}
 	
-}
 	
-
-
-
+	
+}

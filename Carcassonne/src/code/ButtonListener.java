@@ -16,6 +16,7 @@ public class ButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		_view.PlaceTile(_point);
+		_view.updateView();
 		
 	}
 

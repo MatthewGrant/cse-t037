@@ -20,8 +20,10 @@ public class View implements Runnable {
 	private JPanel _Top;//the top part of the frame
 	private JPanel _Bottom;// the bottom part of the frame
 	private Board _board;
-	private BufferedImage _pic;
-	
+	private BufferedImage _pic;//the picert that will plased on the image
+	private JButton _Left;
+	private JButton _Center;
+	private JButton _Right;
 	
 	
 	/**
@@ -40,7 +42,7 @@ public class View implements Runnable {
 	 */
 	public void updateView(){
 		
-		//Setting the location of the buttons
+		_Top.removeAll();
 		JButton[][] buttons = new JButton[3][3];
 		for(int i =0; i<buttons.length  ; i++){// get the size of the coulems
 			for (int j =0; j<buttons[0].length ; j++){//get the size of the rows
@@ -61,24 +63,53 @@ public class View implements Runnable {
 					
 				}
 				
-				
-				//put  buttons on the lower half of the board 	to rotate the tiles 			
-				
+				 			
 			}
+			//puting stuff on the lower half of the board
+			//updateButton(_Left,1,0);
+			//updateButton(_Center,1,1);
+			//updateButton(_Right,1,2);
+			
+			_Left.setText("Rotate Tile Left");
+			BaseTile temp = _board.nextTile();
+			_Center.setIcon(new ImageIcon(_pic.getSubimage(temp.getPoint().x*81, temp.getPoint().y*81, 81, 81)));
+			_Right.setText("Rotate Tile Right");
+			
+			
+			//put  buttons on the lower half of the board 	to rotate the tiles
 			//have the players name print out on the bottom part of the board
 		}
-		
-		
-		 
 		_window.pack();
 	}
 
+	//private void updateButton(JButton b, int row, int col) {
+		// TODO Auto-generated method stub
+		
+	//}
+
+
+	/**
+	 * @param p is a point for the tails relaated to the image
+	 */
 	public void PlaceTile(Point p){
 		_board.place(p, _board.nextTile());
 		
 	}
+	/**
+	 * so i can put the buttions on the bottom part of the frame
+	 * @param p the place on the jfraam
+	 * @return the button on the jframe
+	 */
+	private JButton createButton(JPanel p) {
+		JButton b = new JButton();
+		
+		p.add(b);
+		return b;
+	}
+	
 /**
  * when the game start this stuff will run
+ * it allows up to have the baord and other things 
  */
 @Override
 	public void run() {
@@ -89,8 +120,11 @@ public class View implements Runnable {
 		_Top.setLayout(new GridLayout(3,3));
 		
 		_Bottom= new JPanel();
-		_Bottom.setLayout(new GridLayout());
-	
+		_Bottom.setLayout(new GridLayout(1,3));//sets the numnber of rows and columes
+		
+		_Left = createButton(_Bottom);
+		_Center = createButton(_Bottom);
+		_Right = createButton(_Bottom);
 		//_model.addObserver(this);
 	
 		_window.setFocusable(true);
@@ -109,5 +143,8 @@ public class View implements Runnable {
 		System.out.println(_pic);
 		updateView();
 }
+
+
+
 
 }
