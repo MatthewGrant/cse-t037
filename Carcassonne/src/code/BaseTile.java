@@ -6,14 +6,12 @@ package code;
  */
 public class BaseTile {
 	
-	Edge top = new Edge(null, null, null);
-	Edge bottom = new Edge(null, null, null);
-	Edge left = new Edge(null, null, null);
-	Edge right = new Edge(null, null, null);
+	private Edge top = new Edge(null, null, null);
+	private Edge bottom = new Edge(null, null, null);
+	private Edge left = new Edge(null, null, null);
+	private Edge right = new Edge(null, null, null);
 	Center center = new Center(null);
 		
-		
-
 	/**
 	 * this is defining the outline of the tile
 	 * @param Top
@@ -69,7 +67,6 @@ public class BaseTile {
 		this.right = temp;
 			
 	}
-	
 	
 	
 	//this is the getters

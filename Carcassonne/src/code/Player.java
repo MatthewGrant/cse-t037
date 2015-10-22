@@ -56,7 +56,7 @@ public class Player {
 	  }
 
 	  
-	  // add methods for placeMeeple, takeMeeples counts
+	  // add methods for placeMeeple, count takeMeeples 
 
 	  @Override
 	  public boolean equals(Object obj) {

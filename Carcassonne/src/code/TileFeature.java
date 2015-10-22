@@ -10,6 +10,14 @@ public abstract class TileFeature {
 	protected final Feature section3;
 	protected final Feature center;
 	
+	// This area needs work 
+	protected boolean canPlaceMeeple;
+	protected boolean touchesMeeple;
+	protected Meeple meepleSec1;
+	protected Meeple meepleSec2;
+	protected Meeple meepleSec3;
+	protected Meeple meepleCent;
+	
 	/**  
 	   * feature what feature is contained
 	   */
@@ -18,8 +26,14 @@ public abstract class TileFeature {
 	    this.section2 = feature2;
 	    this.section3 = feature3;
 	    this.center = null;
+	 
+	    
+	    //How to add meeple to a single feature?
+	    this.meepleCent = null;
+	    this.meepleSec1 = null;
+	    this.meepleSec2  = null;
+	    this.meepleSec3  = null;
 	}
-	
 	
 	/**
 	 *  overloaded constructor method just for center features
@@ -30,6 +44,12 @@ public abstract class TileFeature {
 		this.section1 = null;
 		this.section2 = null;
 		this.section3 = null;
+		
+		 //How to add meeple to a single feature?
+	    this.meepleCent = null;
+	    this.meepleSec1 = null;
+	    this.meepleSec2  = null;
+	    this.meepleSec3  = null;
 	}
 
 	public Feature getSection1() {
