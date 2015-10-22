@@ -53,6 +53,7 @@ public class View implements Runnable {
 		g.drawImage(img, xform, null);
 		g.dispose();
 		return temp;
+		
 	}
 	
 	/**
