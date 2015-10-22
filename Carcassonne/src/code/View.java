@@ -1,16 +1,11 @@
 package code;
 
 //this is wair you can see the board 
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.Graphics2D;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -43,18 +38,6 @@ public class View implements Runnable {
 	}
 	
 	
-	public BufferedImage rotateImage(BufferedImage img, int rotate){
-		BufferedImage temp = new BufferedImage(81,81,img.getType());
-		Graphics2D g = (Graphics2D) temp.getGraphics();
-		AffineTransform xform = new AffineTransform();
-		xform.translate(81/2.0, 81/2.0);
-		xform.rotate((Math.PI/2.0)*rotate);
-		xform.translate(-81/2.0, -81/2.0);
-		g.drawImage(img, xform, null);
-		g.dispose();
-		return temp;
-	}
-	
 	/**
 	 * this updates the view when a new tile is plased on the board
 	 * this also places the first tile
@@ -81,11 +64,7 @@ public class View implements Runnable {
 				BaseTile temp = _board.ifTileIsThere(p);
 				if( temp!= null ){
 					Point loc = temp.getPoint();
-					
-					// Add image rotation method
-					BufferedImage tempImage=rotateImage(_pic.getSubimage(loc.x*81, loc.y*81, 81, 81),temp.getRotation());
-					ImageIcon ico = new ImageIcon(tempImage);
-					
+					ImageIcon ico = new ImageIcon(_pic.getSubimage(loc.x*81, loc.y*81, 81, 81));
 					buttons[i][j].setIcon(ico);
 					
 				}
@@ -94,14 +73,10 @@ public class View implements Runnable {
 			//puting stuff on the lower half of the board
 			
 			
-			
+			_Left.setText("Rotate Tile Left");
 			BaseTile temp = _board.nextTile();
-			
-			// Rotate image method here 
-			BufferedImage tempImage=rotateImage(_pic.getSubimage(temp.getPoint().x*81, temp.getPoint().y*81, 81, 81),temp.getRotation());
-			ImageIcon ico = new ImageIcon(tempImage);
-			_Center.setIcon(ico);
-			
+			_Center.setIcon(new ImageIcon(_pic.getSubimage(temp.getPoint().x*81, temp.getPoint().y*81, 81, 81)));
+			_Right.setText("Rotate Tile Right");
 			
 			
 			//put  buttons on the lower half of the board 	to rotate the tiles
@@ -148,25 +123,8 @@ public class View implements Runnable {
 		//_Bottom.setLayout(new GridLayout(1,3));//sets the numnber of rows and colume
 		
 		_Left = createButton(_Bottom);
-		_Left.setText("Rotate Left");
-		_Left.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				_board.nextTile().RotateLeft();
-				updateView();
-			}
-		});
-		
 		_Center = createButton(_Bottom);
 		_Right = createButton(_Bottom);
-		_Right.setText("Rotate Right");
-		_Right.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				_board.nextTile().RotateRight();
-				updateView();
-			}
-		});
 		//_model.addObserver(this);
 	
 		_window.setFocusable(true);
