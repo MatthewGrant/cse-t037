@@ -20,6 +20,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.Border;
 
 
@@ -34,6 +36,11 @@ public class View implements Runnable {
 	private JButton _Center;//this button has the 
 	private JButton _Right;
 	
+	//Place these on bottom Pane for players to see
+	// need to create in view,link to methods and update after action 
+	private JPanel _Header; 
+	private JTextPane  _playerTurn; 
+	private JTextPane  _TilesRemaning; 
 	
 	/**
 	 * the view for the board so you can see what you are playing 
@@ -85,7 +92,7 @@ public class View implements Runnable {
 				if( temp!= null ){
 					Point loc = temp.getPoint();
 					
-					// Add image rotation method
+					// Adds image to buttons on board 
 					BufferedImage tempImage=rotateImage(_pic.getSubimage(loc.x*81, loc.y*81, 81, 81),temp.getRotation());
 					ImageIcon ico = new ImageIcon(tempImage);
 					buttons[i][j].setIcon(ico);
@@ -140,10 +147,10 @@ public class View implements Runnable {
 		_Top= new JPanel();
 		_Top.setBackground(Color.LIGHT_GRAY);
 		
-		//Initial 3 by 3 grid 
+		//Initial to 3 by 3 grid 
 		_Top.setLayout(new GridLayout(3,3));
 		
-		//NEED TO Scale contents of JPanel
+		//NEED TO Scale contents of JPanel so the Frame doesn't grow off the screen
 		//Create bottom Jpanel 
 		_Bottom= new JPanel();
 		

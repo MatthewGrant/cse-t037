@@ -7,9 +7,9 @@ import java.util.Scanner;
 import code.Deck;
 public class GameManager {
 
-private Deck deck; //Currently in Board class should/can we move
+private Deck deck; //Currently created in Board class should/can we move?
 private BaseTile curTile = null;
-private Board board;
+private Board board; 
 
 private List<Player> players;
 private int turnNumber;
@@ -86,6 +86,12 @@ public boolean isGameOver() {
 }
 
 
+public Player nextPlayer(){
+	curPlayer = players.get(turnNumber % players.size());
+	turnNumber++;
+	return curPlayer;
+}
+
 
 public static void main(String[] args){
 	//enter player names
@@ -96,7 +102,7 @@ public static void main(String[] args){
 	for (int i=0; i<args.length; i++) {
 		System.out.println("player " + (i+1) + " is " +args[i]);
 		
-		
+	// add each player to player list 	
 	//print player order
 		}
 	}

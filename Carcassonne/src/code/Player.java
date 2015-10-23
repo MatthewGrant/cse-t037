@@ -3,8 +3,8 @@ package code;
 public class Player {
 	  public final int id;
 	  public static int nextID=1;
-	  private final String name;
-	  //private int score;
+	  private String name;
+	  
 	  private int numMeeples;
 	  private static final int MAXMEEPLES = 7;
 
@@ -35,6 +35,11 @@ public class Player {
 	   */
 	  public String getName() {
 	    return name;
+	  }
+	  
+	  
+	  public void setName(String name){
+		  this.name = name;
 	  }
 	 
 
