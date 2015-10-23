@@ -1,6 +1,7 @@
 package code;
 
 //this is wair you can see the board 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -20,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.Border;
@@ -73,16 +75,18 @@ public class View implements Runnable {
 		
 		_Top.removeAll();
 		
-		JButton[][] buttons = new JButton[(Math.abs(_board.get_lower()) + _board.get_upper())+1][(Math.abs(_board.get_left()) + _board.get_right())+1];
+		JButton[][] buttons = new JButton[(Math.abs(_board.get_lower()) + _board.get_upper())+3][(Math.abs(_board.get_left()) + _board.get_right())+3];
 		_Top.setLayout(new GridLayout(buttons.length,buttons[0].length));
 		for(int i =0; i<buttons.length  ; i++){// get the size of the coulems
 			for (int j =0; j<buttons[0].length ; j++){//get the size of the rows
 				buttons[i][j]= new JButton();
-				Border emptyBorder = BorderFactory.createEmptyBorder();
-				buttons[i][j].setBorder(emptyBorder);
+				
+				//Set button boarder to empty
+				//Border emptyBorder = BorderFactory.createEmptyBorder();
+				//buttons[i][j].setBorder(emptyBorder);
 				Point p;
-				int x = (_board.get_left()+j);
-				int y = ( _board.get_lower()+i);
+				int x = (_board.get_left()+i);
+				int y = ( _board.get_lower()+j);
 				p = new Point(x,y);
 				
 				buttons[i][j].addActionListener(new ButtonListener(p,this));
@@ -139,20 +143,24 @@ public class View implements Runnable {
 	public void run() {
 		//Jframe
 		_window = new JFrame("Carcassonne");
-		//_window.setPreferredSize(new Dimension(800, 650));
+		//set JFrame to dimensions
+		_window.setPreferredSize(new Dimension(800, 650));
 		// 2 rows by 1 column
 		_window.setLayout(new GridLayout(2,1));
 		
-		//Top jPanel within Jframe
+		//Top JPanel within Jframe
 		_Top= new JPanel();
 		_Top.setBackground(Color.LIGHT_GRAY);
-		
+	
 		//Initial to 3 by 3 grid 
 		_Top.setLayout(new GridLayout(3,3));
 		
 		//NEED TO Scale contents of JPanel so the Frame doesn't grow off the screen
 		//Create bottom Jpanel 
 		_Bottom= new JPanel();
+		_Bottom.setPreferredSize(new Dimension(100,650));
+		
+		JScrollPane _scroll = new JScrollPane(_Top);
 		
 		// Create Left rotate button with method to rotate tile on click 
 		_Left = createButton(_Bottom);
@@ -181,8 +189,8 @@ public class View implements Runnable {
 		});
 		
 		_window.setFocusable(true);
-		_window.add(_Top);
-		_window.add(_Bottom);
+		_window.add(_scroll, BorderLayout.CENTER);
+		_window.add(_Bottom, BorderLayout.SOUTH);
 		_window.pack();
 		_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_window.setVisible(true);
