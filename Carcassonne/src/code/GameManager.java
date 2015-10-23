@@ -1,36 +1,91 @@
 
 package code;
 
+import java.util.List;
 import java.util.Scanner;
+
 import code.Deck;
 public class GameManager {
-	
+
+private Deck deck; //Currently in Board class should/can we move
+private BaseTile curTile = null;
+private Board board;
+
+private List<Player> players;
+private int turnNumber;
+private Player curPlayer;
+private boolean isGameOver;
+
+
+public List<Player> getPlayers() {
+	return players;
+}
+
+
+public void setPlayers(List<Player> players) {
+	this.players = players;
+}
+
+
+public Deck getDeck() {
+	return deck;
+}
 
 
 
-//public static void players(String[] args){
-//Scanner scanner= new Scanner(System.in);	
-//System.out.print("Enter the ammount of players");
-////ask for the amount of players 
-//int players= scanner.nextInt();
-////players input as an Int
-//if(players < 2){
-//	System.out.print("Sorry, not enough players to play");
-//	scanner.next();
-//}
-//
-//if(players > 5){
-//	System.out.print("Sorry, too many players to play");
-//	scanner.next();
-//}
-//if(players > 2 && players < 5){
-//	System.out.print("Alright, lets Start! Now who goes first");
-//	scanner.next();
-//}
-//}
+public void setDeck(Deck deck) {
+	this.deck = deck;
+}
 
-//s.getnexttile == null
-//soutplrint('no more cards to be played')
+
+
+public int getTurnNumber() {
+	return turnNumber;
+}
+
+
+
+public void setTurnNumber(int turnNumber) {
+	this.turnNumber = turnNumber;
+}
+
+
+
+public Player getCurPlayer() {
+	return curPlayer;
+}
+
+
+
+public void setCurPlayer(Player curPlayer) {
+	this.curPlayer = curPlayer;
+}
+
+
+
+public Board getBoard() {
+	return board;
+}
+
+
+
+public BaseTile getCurTile() {
+	return curTile;
+}
+
+
+public void setGameOver(boolean g) {
+    isGameOver = g;
+  }
+
+public boolean isGameOver() {
+	if(deck.isEmpty()){
+		isGameOver = true;
+	}
+	return isGameOver;
+}
+
+
 
 public static void main(String[] args){
 	//enter player names
@@ -43,21 +98,8 @@ public static void main(String[] args){
 		
 		
 	//print player order
+		}
 	}
-	
-	
-			
-/*/			Scanner scanner= new Scanner(System.in);
-System.out.print("Enter your name:");
-//ask for their name
-String username= scanner.next();
-//name input as string
-System.out.print("Enter your age:");
-//ask for age (play oldest to youngest)
-int age= scanner.nextInt();
-//age input as int
-System.out.println(String.format("%s,  your age is %d",username,age));
-scanner.next();
-/*/
-}
+
+
 }

@@ -420,16 +420,20 @@ public class Deck {
 	 * @return the tile you just took out of th edeck
 	 */
 	public BaseTile getNextTile(){
-		if(getTilesRemaning() > 0){
-			return _deck.remove(0);
+		if(isEmpty()){
+			return null;
 		}
-		return null; 
+		return _deck.remove(0);
 	}
 	/**
 	 * @return
 	 */
 	public BaseTile nextTile(){
 		return _deck.get(0);
+	}
+
+	public boolean isEmpty() {
+		return _deck.isEmpty();
 	}
 	
 	

@@ -15,13 +15,23 @@ public class TestDeck {
 	 * deck ArrayList.
 	 */
 	@Test
-	public void deckTest() {
+	public void tilesRemaingTest() {
 	    
 		Deck deck = new Deck();
 		assertEquals(71,deck.getTilesRemaning());
 		deck.getNextTile();
 		assertEquals(70,deck.getTilesRemaning());
 	  }
+	
+	@Test
+	public void isEmptyTest() {
+		Deck deck = new Deck();
+		for (int i = 71; i>0; i-- ){
+		deck.getNextTile();
+		}
+		assertEquals(true,deck.isEmpty());
+	  }
+	
 	
 
 }

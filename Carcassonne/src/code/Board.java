@@ -7,7 +7,7 @@ import java.awt.Point;
 
 public class Board {
 	private HashMap<Point, BaseTile> _board;
-	private Deck _deck;
+	private Deck _deck; //MOVE TO GAME MANAGER
 	//these are the bounds for my board
 	private int _upper = 1;
 	private int _lower = -1;
@@ -20,7 +20,7 @@ public class Board {
 	public Board() {
 		
 		_board = new HashMap<Point, BaseTile>();
-		_deck = new Deck();
+		_deck = new Deck(); //MOVE TO GAME MANAGER? 
 		
 		//the origin of the board is 0,0 and that is wair i am putting the tile
 		_board.put(new Point(0,0),new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
