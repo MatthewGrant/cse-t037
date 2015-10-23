@@ -1,6 +1,8 @@
 package code;
 
 //this is wair you can see the board 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Point;
@@ -42,7 +44,7 @@ public class View implements Runnable {
 		run();
 	}
 	
-	
+	// Code to Rotate image 
 	public BufferedImage rotateImage(BufferedImage img, int rotate){
 		BufferedImage temp = new BufferedImage(81,81,img.getType());
 		Graphics2D g = (Graphics2D) temp.getGraphics();
@@ -86,24 +88,16 @@ public class View implements Runnable {
 					// Add image rotation method
 					BufferedImage tempImage=rotateImage(_pic.getSubimage(loc.x*81, loc.y*81, 81, 81),temp.getRotation());
 					ImageIcon ico = new ImageIcon(tempImage);
-					
 					buttons[i][j].setIcon(ico);
-					
 				}
-				 			
 			}
-			//puting stuff on the lower half of the board
-			
-			
-			
+		
 			BaseTile temp = _board.nextTile();
 			
-			// Rotate image method here 
+			//Sets Center button with tile icon (file --> buffered Image --> ImageIcon)
 			BufferedImage tempImage=rotateImage(_pic.getSubimage(temp.getPoint().x*81, temp.getPoint().y*81, 81, 81),temp.getRotation());
 			ImageIcon ico = new ImageIcon(tempImage);
 			_Center.setIcon(ico);
-			
-			
 			
 			//put  buttons on the lower half of the board 	to rotate the tiles
 			//have the players name print out on the bottom part of the board
@@ -112,8 +106,6 @@ public class View implements Runnable {
 	}
 
 	
-
-
 	/**
 	 * @param p is a point for the tails relaated to the image
 	 */
@@ -128,7 +120,6 @@ public class View implements Runnable {
 	 */
 	private JButton createButton(JPanel p) {
 		JButton b = new JButton();
-		
 		p.add(b);
 		return b;
 	}
@@ -139,26 +130,39 @@ public class View implements Runnable {
  */
 @Override
 	public void run() {
+		//Jframe
 		_window = new JFrame("Carcassonne");
+		//_window.setPreferredSize(new Dimension(800, 650));
+		// 2 rows by 1 column
 		_window.setLayout(new GridLayout(2,1));
 		
+		//Top jPanel within Jframe
 		_Top= new JPanel();
+		_Top.setBackground(Color.LIGHT_GRAY);
+		
+		//Initial 3 by 3 grid 
 		_Top.setLayout(new GridLayout(3,3));
 		
+		//NEED TO Scale contents of JPanel
+		//Create bottom Jpanel 
 		_Bottom= new JPanel();
-		//_Bottom.setLayout(new GridLayout(1,3));//sets the numnber of rows and colume
 		
+		// Create Left rotate button with method to rotate tile on click 
 		_Left = createButton(_Bottom);
 		_Left.setText("Rotate Left");
 		_Left.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// Calls baseTiles rotate method on nextTile with button is pressed
 				_board.nextTile().RotateLeft();
 				updateView();
 			}
 		});
 		
+		//create center button 
 		_Center = createButton(_Bottom);
+		
+		// create right rotate button with method to rotate tile on click
 		_Right = createButton(_Bottom);
 		_Right.setText("Rotate Right");
 		_Right.addActionListener(new ActionListener(){
@@ -168,10 +172,8 @@ public class View implements Runnable {
 				updateView();
 			}
 		});
-		//_model.addObserver(this);
-	
-		_window.setFocusable(true);
 		
+		_window.setFocusable(true);
 		_window.add(_Top);
 		_window.add(_Bottom);
 		_window.pack();
