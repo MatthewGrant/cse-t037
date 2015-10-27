@@ -85,8 +85,8 @@ public class View implements Runnable {
 				//Border emptyBorder = BorderFactory.createEmptyBorder();
 				//buttons[i][j].setBorder(emptyBorder);
 				Point p;
-				int x = (_board.get_left()+i);
-				int y = ( _board.get_lower()+j);
+				int x = (_board.get_left()+j);
+				int y = ( _board.get_lower()+i);
 				p = new Point(x,y);
 				
 				buttons[i][j].addActionListener(new ButtonListener(p,this));
