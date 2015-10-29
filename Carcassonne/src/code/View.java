@@ -53,7 +53,13 @@ public class View implements Runnable {
 		run();
 	}
 	
-	// Code to Rotate image 
+	  
+	/**
+	 * Code to Rotate image
+	 * @param img the pic that will be rotates
+	 * @param rotate 
+	 * @return the finly rotated image
+	 */
 	public BufferedImage rotateImage(BufferedImage img, int rotate){
 		BufferedImage temp = new BufferedImage(81,81,img.getType());
 		Graphics2D g = (Graphics2D) temp.getGraphics();
@@ -74,7 +80,7 @@ public class View implements Runnable {
 	public void updateView(){
 		
 		_Top.removeAll();
-		
+		//increaes the board size using the bounds in the Baord class
 		JButton[][] buttons = new JButton[(Math.abs(_board.get_lower()) + _board.get_upper())+1][(Math.abs(_board.get_left()) + _board.get_right())+1];
 		_Top.setLayout(new GridLayout(buttons.length,buttons[0].length));
 		for(int i =0; i<buttons.length  ; i++){// get the size of the coulems
@@ -153,7 +159,7 @@ public class View implements Runnable {
 		_Top.setBackground(Color.LIGHT_GRAY);
 	
 		//Initial to 3 by 3 grid 
-		_Top.setLayout(new GridLayout(3,3));
+		_Top.setLayout(new GridLayout(3,8));
 		
 		//NEED TO Scale contents of JPanel so the Frame doesn't grow off the screen
 		//Create bottom Jpanel 
@@ -181,6 +187,7 @@ public class View implements Runnable {
 		_Right = createButton(_Bottom);
 		_Right.setText("Rotate Right");
 		_Right.addActionListener(new ActionListener(){
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				_board.nextTile().RotateRight();

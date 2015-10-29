@@ -11,8 +11,8 @@ public class Board {
 	//these are the bounds for my board
 	private int _upper = 1;
 	private int _lower = -1;
-	private int _right = 1;
-	private int _left = -1;
+	private int _right = 3;//to change these number will increase the starting board size so that we can have a scrool pane on the bottom part of the barod
+	private int _left = -3;//both of the 3 could be changed to 1 and the game would still work
 	
 	/**
 	 * creating a board that is inf and putting the first tile on the board 
@@ -70,8 +70,8 @@ public class Board {
 			}
 			if(check1){
 				
-				//cheek to see if the side match up
-				//this might be wrong
+				//cheek to see if the side match up so you can place the tile
+			
 				if(adjacentTiles[0] != null){
 					
 					if(adjacentTiles[0].getBottom().equals(basetile.getTop())){
@@ -83,7 +83,7 @@ public class Board {
 					}
 				}
 				if(adjacentTiles[1] != null){
-					if(adjacentTiles[1].getLeft().equals(basetile.getRight())){//changed from .euqles to ==
+					if(adjacentTiles[1].getLeft().equals(basetile.getRight())){
 						end = true;
 						
 					}
@@ -129,6 +129,7 @@ public class Board {
 		
 		if (canBePlaced(point,basetile)){
 			//check to see if the tile is placed at the boarded
+			
 			draw();
 			_board.put(point, basetile);
 			if(_upper < point.y+1 ){
@@ -149,8 +150,8 @@ public class Board {
 		return false;
 	}
 	/**
-	 * @param p the pint on the baord
-	 * @return whats at that point
+	 * @param p the point on the baord
+	 * @return whats at that point on the board
 	 */
 	public BaseTile ifTileIsThere(Point p){
 		
@@ -159,7 +160,7 @@ public class Board {
 	}
 	
 	/**
-	 * @return
+	 * @return that thire is a next tile in the deck 
 	 */
 	public BaseTile nextTile(){
 		return _deck.nextTile();
@@ -175,7 +176,7 @@ public class Board {
 	
 	//the geter for the boarned of the board
 	/**
-	 * @return the upper baornded
+	 * @return the upper baornded this is when so we can increase the boaed in the view class 
 	 */
 	public int get_upper() {
 		return _upper;

@@ -8,17 +8,19 @@ import java.util.Collections;
 public class Deck {
 	private ArrayList<BaseTile> _deck ;
 	
-	
+	//all the tiles that can be placed in the game and what features on the sides and what is a t the center
 	public Deck(){
 		
 		_deck = new ArrayList<BaseTile>(); //there are 72 because the stater tile is not inclued
+		
+		// please note the comments thay tell you what that card should have on it if it is wrong you can esaly change it 
 		
 		//road on the bottom. church in the center//two tile in game
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), //top
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),//bottom
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),//left
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),//right
-		        new Center(Feature.MONASTERY),new Point(0,0)));///fix all the tiles like this one
+		        new Center(Feature.MONASTERY),new Point(0,0)));///this one has a center feature because of the monastery the other don't need it unless there is something there
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
                 new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
@@ -31,7 +33,7 @@ public class Deck {
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
-                new Center(Feature.MONASTERY),new Point (1,0)));//it is like a graph 
+                new Center(Feature.MONASTERY),new Point (1,0)));//it is like a grid of point realed to the img's on the spread sheet so that each tile will get the correct img
 		
 		_deck.add(new BaseTile(new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD), 
                 new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
@@ -403,7 +405,7 @@ public class Deck {
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),new Point (3,4)));
 	
-	Collections.shuffle(_deck);//it is mixing up the deck 
+	Collections.shuffle(_deck);//it is mixing up the cards in the deck 
 	}
 	
 	
@@ -426,12 +428,17 @@ public class Deck {
 		return _deck.remove(0);
 	}
 	/**
-	 * @return
+	 * to get the next tile in teh deck
+	 * @return the next tile in the deck
 	 */
 	public BaseTile nextTile(){
 		return _deck.get(0);
 	}
 
+	/**
+	 * tells us if theire are no more tiles in the deck
+	 * @return if the are no more tiles in the deck
+	 */
 	public boolean isEmpty() {
 		return _deck.isEmpty();
 	}

@@ -2,12 +2,11 @@ package code;
 
 import java.awt.Point;
 
+
 //this is the tile
-
-
 public class BaseTile {
 
-	
+	//these come into play in the deck class
 	Edge top = new Edge(null, null, null);
 	Edge bottom = new Edge(null, null, null);
 	Edge left = new Edge(null, null, null);
@@ -37,7 +36,7 @@ public class BaseTile {
 	
 	/**
 	 * this lets me put stuff in the center of the tile
-	 * @param Top
+	 * @param Top is the top of the tile you can get the rest by its name
 	 * @param Bottom
 	 * @param Left
 	 * @param Right
@@ -125,7 +124,7 @@ public class BaseTile {
 	
 	
 	
-	//this is the getters
+	//this is the getters for this class
 	/**
 	 * @return the top edge of the tile
 	 */
@@ -168,6 +167,9 @@ public class BaseTile {
 	}
 
 
+	/**
+	 * @return the new rotateded img of the tile 
+	 */
 	public int getRotation() {
 		return rotation;
 	}

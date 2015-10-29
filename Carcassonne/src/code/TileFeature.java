@@ -41,7 +41,7 @@ public abstract class TileFeature {
 	 */
 	public TileFeature(Feature centerFeature){
 		this.center = centerFeature;
-		this.section1 = null;
+		this.section1 = null;//the first secoint that holes a feature on the side of a tile?????
 		this.section2 = null;
 		this.section3 = null;
 		
