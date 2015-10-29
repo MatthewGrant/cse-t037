@@ -223,7 +223,7 @@ public class Deck {
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),new Point (3,2)));
 		
-		//city top and left road on the bottom and right it also has a sheild//two tiles in the game
+		//city top and left, road on the bottom and right it also has a sheild//two tiles in the game
 		_deck.add(new BaseTile(new Edge(Feature.CITY, Feature.CITY, Feature.CITY), 
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY),
