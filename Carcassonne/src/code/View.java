@@ -35,7 +35,7 @@ public class View implements Runnable {
 	private Board _board;
 	private BufferedImage _pic;//the picert that will plased on the image
 	private JButton _Left;//the left button on the botton part of the screen
-	private JButton _Center;//this button has the tile you are baout to place on it
+	private JButton _Center;//this button has the tile you are about to place on it
 	private JButton _Right;//for roating the tile right
 	
 	//Place these on bottom Pane for players to see
