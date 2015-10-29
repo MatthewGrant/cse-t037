@@ -88,6 +88,7 @@ public class View implements Runnable {
 				buttons[i][j]= new JButton();
 				
 				//Set button boarder to empty
+				//if we put this back in we have to change the bounder size and grid size so that the scrool pane will be on the bottom agian
 				//Border emptyBorder = BorderFactory.createEmptyBorder();
 				//buttons[i][j].setBorder(emptyBorder);
 				Point p;
@@ -158,7 +159,9 @@ public class View implements Runnable {
 		_Top= new JPanel();
 		_Top.setBackground(Color.LIGHT_GRAY);
 	
-		//Initial to 3 by 8 grid  could be any size we want
+		//Initial to 3 by 7  grid  could be any size we want
+		//this give us a scrool pane on the bottom to start and when you place a tile it will give you a scrool pane on the side 
+		//could have it so it gives us a scroll pane on the side to start 
 		_Top.setLayout(new GridLayout(3,8));
 		
 		//NEED TO Scale contents of JPanel so the Frame doesn't grow off the screen
@@ -211,8 +214,5 @@ public class View implements Runnable {
 		System.out.println(_pic);
 		updateView();
 }
-
-
-
 
 }
