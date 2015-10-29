@@ -35,8 +35,8 @@ public class View implements Runnable {
 	private Board _board;
 	private BufferedImage _pic;//the picert that will plased on the image
 	private JButton _Left;//the left button on the botton part of the screen
-	private JButton _Center;//this button has the 
-	private JButton _Right;
+	private JButton _Center;//this button has the tile you are baout to place on it
+	private JButton _Right;//for roating the tile right
 	
 	//Place these on bottom Pane for players to see
 	// need to create in view,link to methods and update after action 
@@ -158,12 +158,13 @@ public class View implements Runnable {
 		_Top= new JPanel();
 		_Top.setBackground(Color.LIGHT_GRAY);
 	
-		//Initial to 3 by 3 grid 
+		//Initial to 3 by 8 grid  could be any size we want
 		_Top.setLayout(new GridLayout(3,8));
 		
 		//NEED TO Scale contents of JPanel so the Frame doesn't grow off the screen
 		//Create bottom Jpanel 
 		_Bottom= new JPanel();
+		
 		_Bottom.setPreferredSize(new Dimension(100,650));
 		
 		JScrollPane _scroll = new JScrollPane(_Top);
