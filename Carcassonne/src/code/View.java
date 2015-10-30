@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
@@ -41,6 +42,12 @@ public class View implements Runnable {
 	private JButton _LeftMeeple; //this is the button we will eventually use for meeples
 	private JButton _RightY; //this will be the button to chose yes
 	private JButton _RightN;//the button for no
+	private JButton _Where;//where to place the meeple
+	private JButton _City; //the button for placing meeple in city
+	private JButton _Road; //the button for placing meeple in road
+	private JButton _Field;//the button for placing meeple in field
+	
+	
 	//Place these on bottom Pane for players to see
 	// need to create in view,link to methods and update after action 
 	private JPanel _Header; 
@@ -156,8 +163,8 @@ public class View implements Runnable {
 		//set JFrame to dimensions
 		_window.setPreferredSize(new Dimension(800, 650));
 		// 2 rows by 1 column
-		_window.setLayout(new GridLayout(2,1));
-		
+		//_window.setLayout(new GridLayout(2,1));
+		_window.setLayout(new GridLayout(3,1));
 		//Top JPanel within Jframe
 		_Top= new JPanel();
 		_Top.setBackground(Color.LIGHT_GRAY);
@@ -173,10 +180,12 @@ public class View implements Runnable {
 		
 		_Bottom.setPreferredSize(new Dimension(100,650));
 		
-		/*/_BottomTwo= new JPanel(); //create JPanel below the rotate panel
+		_BottomTwo= new JPanel(); //create JPanel below the rotate panel
 		
-		_BottomTwo.setPreferredSize(new Dimension(100,650));
-		/*/
+		_BottomTwo.setPreferredSize(new Dimension(25,650));
+		
+		
+		
 		JScrollPane _scroll = new JScrollPane(_Top);
 		
 		// Create Left rotate button with method to rotate tile on click 
@@ -209,7 +218,7 @@ public class View implements Runnable {
 			}
 		});
 		
-		_LeftMeeple = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
+		_LeftMeeple = createButton(_BottomTwo); //maybe _BottomTwo if i can figure out sizing
 		_LeftMeeple.setText("Would you like to place a Meeple");
 		_LeftMeeple.addActionListener(new ActionListener(){
 		
@@ -221,18 +230,32 @@ public class View implements Runnable {
 			}
 		});
 		
-		_RightY = createButton(_Bottom);//maybe _BottomTwo if i can figure out sizing
+		_RightY = createButton(_BottomTwo);//maybe _BottomTwo if i can figure out sizing
 		_RightY.setText("Yes");
 		_RightY.addActionListener(new ActionListener(){
 		
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//... when we figure out meeple position we will ask it now
+			//	_Where= createButton(_BottomTwo);//... when we figure out meeple position we will ask it now 
+				
 				updateView();
 			}
 		});
-		_RightN = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
+		/*/	_Where.setText("Where would you like to place it");
+			_Where.addActionListener(new ActionListener(){ 
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					_City=createButton(_BottomTwo);//... it would then switch names on the name button and change turns
+					_Field=createButton(_BottomTwo);
+					_Road=createButton(_BottomTwo);
+					updateView();
+				}
+			/*/
+				
+				
+		//});
+		_RightN = createButton(_BottomTwo); //maybe _BottomTwo if i can figure out sizing
 		_RightN.setText("No");
 		_RightN.addActionListener(new ActionListener(){
 		
@@ -246,11 +269,11 @@ public class View implements Runnable {
 		
 		
 		_window.setFocusable(true);
-		_window.add(_scroll, BorderLayout.CENTER);
-		_window.add(_Bottom, BorderLayout.SOUTH);
-		/*/_window.add(_scroll, BorderLayout.NORTH);
+		/*/_window.add(_scroll, BorderLayout.CENTER);
+		_window.add(_Bottom, BorderLayout.SOUTH);/*/
+		_window.add(_scroll, BorderLayout.NORTH);
 		_window.add(_Bottom, BorderLayout.CENTER);
-		_window.add(_BottomTwo, BorderLayout.SOUTH); /*/
+		_window.add(_BottomTwo, BorderLayout.SOUTH);
 		_window.pack();
 		_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_window.setVisible(true);
