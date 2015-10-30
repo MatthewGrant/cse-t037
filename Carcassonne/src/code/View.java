@@ -32,12 +32,15 @@ public class View implements Runnable {
 	private JFrame _window;
 	private JPanel _Top;//the top part of the frame
 	private JPanel _Bottom;// the bottom part of the frame
+	private JPanel _BottomTwo; //below the rotate
 	private Board _board;
 	private BufferedImage _pic;//the picert that will plased on the image
 	private JButton _Left;//the left button on the botton part of the screen
 	private JButton _Center;//this button has the tile you are about to place on it
 	private JButton _Right;//for roating the tile right
-	
+	private JButton _LeftMeeple; //this is the button we will eventually use for meeples
+	private JButton _RightY; //this will be the button to chose yes
+	private JButton _RightN;//the button for no
 	//Place these on bottom Pane for players to see
 	// need to create in view,link to methods and update after action 
 	private JPanel _Header; 
@@ -170,12 +173,18 @@ public class View implements Runnable {
 		
 		_Bottom.setPreferredSize(new Dimension(100,650));
 		
+		/*/_BottomTwo= new JPanel(); //create JPanel below the rotate panel
+		
+		_BottomTwo.setPreferredSize(new Dimension(100,650));
+		/*/
 		JScrollPane _scroll = new JScrollPane(_Top);
 		
 		// Create Left rotate button with method to rotate tile on click 
 		_Left = createButton(_Bottom);
 		_Left.setText("Rotate Left");
 		_Left.addActionListener(new ActionListener(){
+			//add another button to determine if the player wants to place a meeple
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Calls baseTiles rotate method on nextTile with button is pressed
@@ -191,6 +200,7 @@ public class View implements Runnable {
 		_Right = createButton(_Bottom);
 		_Right.setText("Rotate Right");
 		_Right.addActionListener(new ActionListener(){
+		
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -199,9 +209,48 @@ public class View implements Runnable {
 			}
 		});
 		
+		_LeftMeeple = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
+		_LeftMeeple.setText("Would you like to place a Meeple");
+		_LeftMeeple.addActionListener(new ActionListener(){
+		
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//... Ask if you would like to place meeple
+				updateView();
+			}
+		});
+		
+		_RightY = createButton(_Bottom);//maybe _BottomTwo if i can figure out sizing
+		_RightY.setText("Yes");
+		_RightY.addActionListener(new ActionListener(){
+		
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//... when we figure out meeple position we will ask it now
+				updateView();
+			}
+		});
+		_RightN = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
+		_RightN.setText("No");
+		_RightN.addActionListener(new ActionListener(){
+		
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//... it would then switch names on the name button and change turns
+				updateView();
+			}
+		});
+		
+		
 		_window.setFocusable(true);
 		_window.add(_scroll, BorderLayout.CENTER);
 		_window.add(_Bottom, BorderLayout.SOUTH);
+		/*/_window.add(_scroll, BorderLayout.NORTH);
+		_window.add(_Bottom, BorderLayout.CENTER);
+		_window.add(_BottomTwo, BorderLayout.SOUTH); /*/
 		_window.pack();
 		_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_window.setVisible(true);
