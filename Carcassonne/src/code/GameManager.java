@@ -11,7 +11,7 @@ private Deck deck; //Currently created in Board class should/can we move?
 private BaseTile curTile = null;
 private Board board; 
 
-private List<Player> players;
+private static List<Player> players;
 private int turnNumber;
 private Player curPlayer;
 private boolean isGameOver;
@@ -28,10 +28,18 @@ public static void main(String[] args){
 	
 	System.out.println("The player order is ");//print out the play order
 	for (int i=0; i<args.length; i++) {
-		System.out.println("player " + (i+1) + " is " +args[i]);//prints outs the players names
+		String playerName = args[i];
 		
-	// add each player to player list 	
-	//print player order
+		// add each player to player list 
+		
+		Player player  = new Player(playerName);
+		players.add(player);
+		
+		//print player order
+		System.out.println("player " + (i+1) + " is " +args[i]);//prints outs the players names
+		System.out.println();
+		
+	
 		}
 	}
 
@@ -53,6 +61,11 @@ public void setPlayers(List<Player> players) {
 	this.players = players;
 }
 
+public void newPlayer(Player player) {
+    if (players.size() < 5) {
+      players.add(player);
+    }
+  }
 
 /**
  * gets the deck 
@@ -102,8 +115,6 @@ public Player getCurPlayer() {
 	return curPlayer;
 }
 
-
-
 /** 
  * setst the player order
  * @param curPlayer
@@ -112,7 +123,15 @@ public void setCurPlayer(Player curPlayer) {
 	this.curPlayer = curPlayer;
 }
 
-
+/**
+ * will tells us the next player
+ * @return the curent players name
+ */
+public Player nextPlayer(){
+	curPlayer = players.get(turnNumber % players.size());
+	turnNumber++;
+	return curPlayer;
+}
 
 /**
  * gets the board so the player can play
@@ -153,15 +172,6 @@ public boolean isGameOver() {
 }
 
 
-/**
- * will tells us the next player
- * @return the curent players name
- */
-public Player nextPlayer(){
-	curPlayer = players.get(turnNumber % players.size());
-	turnNumber++;
-	return curPlayer;
-}
 
 
 
