@@ -34,6 +34,7 @@ public class View implements Runnable {
 	private JPanel _Top;//the top part of the frame
 	private JPanel _Bottom;// the bottom part of the frame
 	private JPanel _BottomTwo; //below the rotate
+	private JPanel _MeepleWindow;//opens new window on meeple yes button click
 	private Board _board;
 	private BufferedImage _pic;//the picert that will plased on the image
 	private JButton _Left;//the left button on the botton part of the screen
@@ -46,7 +47,7 @@ public class View implements Runnable {
 	private JButton _City; //the button for placing meeple in city
 	private JButton _Road; //the button for placing meeple in road
 	private JButton _Field;//the button for placing meeple in field
-	
+	private JFrame _MeepleFrame;//new meeple Jframe
 	
 	//Place these on bottom Pane for players to see
 	// need to create in view,link to methods and update after action 
@@ -80,6 +81,15 @@ public class View implements Runnable {
 		g.drawImage(img, xform, null);
 		g.dispose();
 		return temp;
+		
+	}
+	public void meeplewindow(){
+		_MeepleWindow=new JPanel();
+		_MeepleWindow.setPreferredSize(new Dimension(800, 650));
+		_MeepleWindow.setVisible(true);
+		
+		
+		
 		
 	}
 	
@@ -163,8 +173,8 @@ public class View implements Runnable {
 		//set JFrame to dimensions
 		_window.setPreferredSize(new Dimension(800, 650));
 		// 2 rows by 1 column
-		//_window.setLayout(new GridLayout(2,1));
-		_window.setLayout(new GridLayout(3,1));
+		_window.setLayout(new GridLayout(2,1));
+		//_window.setLayout(new GridLayout(3,1));
 		//Top JPanel within Jframe
 		_Top= new JPanel();
 		_Top.setBackground(Color.LIGHT_GRAY);
@@ -179,10 +189,11 @@ public class View implements Runnable {
 		_Bottom= new JPanel();
 		
 		_Bottom.setPreferredSize(new Dimension(100,650));
+		_Bottom.setLayout(new GridLayout(2,2));
 		
-		_BottomTwo= new JPanel(); //create JPanel below the rotate panel
+		//_BottomTwo= new JPanel(); //create JPanel below the rotate panel
 		
-		_BottomTwo.setPreferredSize(new Dimension(25,650));
+		//_BottomTwo.setPreferredSize(new Dimension(25,650));
 		
 		
 		
@@ -218,7 +229,7 @@ public class View implements Runnable {
 			}
 		});
 		
-		_LeftMeeple = createButton(_BottomTwo); //maybe _BottomTwo if i can figure out sizing
+		_LeftMeeple = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
 		_LeftMeeple.setText("Would you like to place a Meeple");
 		_LeftMeeple.addActionListener(new ActionListener(){
 		
@@ -230,7 +241,7 @@ public class View implements Runnable {
 			}
 		});
 		
-		_RightY = createButton(_BottomTwo);//maybe _BottomTwo if i can figure out sizing
+		_RightY = createButton(_Bottom);//maybe _BottomTwo if i can figure out sizing
 		_RightY.setText("Yes");
 		_RightY.addActionListener(new ActionListener(){
 		
@@ -253,9 +264,11 @@ public class View implements Runnable {
 				}
 			/*/
 				
-				
+		  
+		      
+		        
 		//});
-		_RightN = createButton(_BottomTwo); //maybe _BottomTwo if i can figure out sizing
+		_RightN = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
 		_RightN.setText("No");
 		_RightN.addActionListener(new ActionListener(){
 		
@@ -269,11 +282,11 @@ public class View implements Runnable {
 		
 		
 		_window.setFocusable(true);
-		/*/_window.add(_scroll, BorderLayout.CENTER);
-		_window.add(_Bottom, BorderLayout.SOUTH);/*/
-		_window.add(_scroll, BorderLayout.NORTH);
-		_window.add(_Bottom, BorderLayout.CENTER);
-		_window.add(_BottomTwo, BorderLayout.SOUTH);
+		_window.add(_scroll, BorderLayout.CENTER);
+		_window.add(_Bottom, BorderLayout.SOUTH);
+		//_window.add(_scroll, BorderLayout.NORTH);
+		//_window.add(_Bottom, BorderLayout.CENTER);
+		//_window.add(_BottomTwo, BorderLayout.SOUTH);
 		_window.pack();
 		_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_window.setVisible(true);
