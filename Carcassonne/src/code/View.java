@@ -4,6 +4,7 @@ package code;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Point;
@@ -30,7 +31,8 @@ public class View implements Runnable {
 	private JFrame _window;
 	private JPanel _Top;//the top part of the frame
 	private JPanel _Bottom;// the bottom part of the frame
-	private JLabel _PlayerNames;//this is a panel that has the current player name in it   
+	private JLabel _PlayerNames;//this is a panel that has the current player name in it 
+	private JLabel _tileRemaning; //Tiles left in deck
 	private JPanel _BottomTwo; //below the rotate
 	private JPanel _MeepleWindow;//opens new window on meeple yes button click
 	private Board _board;
@@ -145,17 +147,24 @@ public class View implements Runnable {
 			ImageIcon ico = new ImageIcon(tempImage);
 			_Center.setIcon(ico);
 			
-			//put  buttons on the lower half of the board 	to rotate the tiles
-			//have the players name print out on the bottom part of the board
+			//put buttons on the lower half of the board to rotate the tiles
 		}
-		_PlayerNames.setText(_name.get(_board.getCurrentPlayerid()).getName());
+		
+		//have the players name print out on the bottom part of the board
+		_PlayerNames.setText("Current Player: " +_name.get(_board.getCurrentPlayerid()).getName());
+		_PlayerNames.setFont(new Font("Serif", Font.PLAIN, 20));
+		
+		// Tiles left in bag
+		_tileRemaning.setText("Tiles Remaining: ") ;
 		//add the mepples to the view 
-		
-		
 		
 		_window.pack();
 	}
 
+	public JFrame getFrame(){
+		return _window; 
+	}
+	
 	
 	/**
 	 * @param p is a point for the tiles relaated to the image
@@ -184,10 +193,10 @@ public class View implements Runnable {
 		//Jframe
 		_window = new JFrame("Carcassonne");
 		//set JFrame to dimensions
-		_window.setPreferredSize(new Dimension(800, 650));
+		_window.setPreferredSize(new Dimension(800, 800));
 		// 2 rows by 1 column
 		_window.setLayout(new GridLayout(2,1));
-		//_window.setLayout(new GridLayout(3,1));
+		
 		//Top JPanel within Jframe
 		_Top= new JPanel();
 		_Top.setBackground(Color.LIGHT_GRAY);
@@ -198,26 +207,28 @@ public class View implements Runnable {
 		_Top.setLayout(new GridLayout(3,8));
 		
 		
-		
-		//NEED TO Scale contents of JPanel so the Frame doesn't grow off the screen
-		//Create bottom Jpanel 
+		//Create bottom half of Frame (temp Jpanel) 
 		JPanel tempPanel1 = new JPanel();
-		tempPanel1.setLayout(new GridLayout(2,1));
-		_Bottom= new JPanel();
-		_Bottom.setPreferredSize(new Dimension(100,650));
+		tempPanel1.setLayout(new GridLayout(2,2));
+		_Bottom = new JPanel();
+		//_Bottom.setPreferredSize(new Dimension(100,650));
 		_Bottom.setLayout(new GridLayout(2,3));//might need to change later
+		
 		//so the current players name will show up as text not a button
 		_PlayerNames = new JLabel();
-		_Bottom.add(_PlayerNames);
-
 		tempPanel1.add(_PlayerNames);
+
+		// Jlabel for Tiles left in deck
+		_tileRemaning = new JLabel();
+		tempPanel1.add(_tileRemaning);
+		
+		
 		tempPanel1.add(_Bottom);
 		//_BottomTwo= new JPanel(); //create JPanel below the rotate panel
-		
 		//_BottomTwo.setPreferredSize(new Dimension(25,650));
 		
 		
-		
+		// Top half of window is a scroll view 
 		JScrollPane _scroll = new JScrollPane(_Top);
 		
 		// Create Left rotate button with method to rotate tile on click 
@@ -241,7 +252,6 @@ public class View implements Runnable {
 		_Right = createButton(_Bottom);
 		_Right.setText("Rotate Right");
 		_Right.addActionListener(new ActionListener(){
-		
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -256,11 +266,7 @@ public class View implements Runnable {
 			System.out.println(x.getName());
 			
 		}
-		
-		
-		
-		
-		
+	
 		
 		_LeftMeeple = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
 		_LeftMeeple.setText("Would you like to place a Meeple");
@@ -315,10 +321,12 @@ public class View implements Runnable {
 			}
 		});
 		
-		
+		//_Bottom.add(_PlayerNames);
 		_window.setFocusable(true);
+		
 		_window.add(_scroll, BorderLayout.CENTER);
 		_window.add(tempPanel1, BorderLayout.SOUTH);
+		
 		//_window.add(_scroll, BorderLayout.NORTH);
 		//_window.add(_Bottom, BorderLayout.CENTER);
 		//_window.add(_BottomTwo, BorderLayout.SOUTH);
