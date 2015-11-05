@@ -241,6 +241,12 @@ public class Board {
 		return _deck.getNextTile();
 	}
 	
+	
+	public int getTilesRemaning(){
+		return _deck.getTilesRemaning();
+	}
+	
+	
 	/**
 	 * finds whos trun it is 
 	 * @return the currents player turn
