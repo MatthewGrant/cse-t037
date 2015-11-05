@@ -1,6 +1,7 @@
 package code;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.Point;
 
@@ -13,7 +14,27 @@ public class Board {
 	private int _lower = -1;
 	private int _right = 3;//to change these number will increase the starting board size so that we can have a scrool pane on the bottom part of the barod
 	private int _left = -3;//both of the 3 could be changed to 1 and the game would still work
+	private int _t=0; //this is for the counting whos player trun it is
+	private int _last;//this is the number coraspinding to the last player in the game
 	
+	/**
+	 * creates the boar this is also a overloaded constuctor
+	 * @param p is the player name
+	 */
+	public Board(ArrayList<Player> p) {
+		
+		_board = new HashMap<Point, BaseTile>();
+		_deck = new Deck(); //MOVE TO GAME MANAGER? 
+		
+		//the origin of the board is 0,0 and that is wair i am putting the tile
+		_board.put(new Point(0,0),new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
+		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
+		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
+		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY)));
+		new View(this,p); 
+		
+		_last = p.size();//to get the last player in the game //used for finding whos truns it is 
+	}
 	/**
 	 * creating a board that is inf and putting the first tile on the board 
 	 */
@@ -31,7 +52,6 @@ public class Board {
 		
 		
 	}
-	
 	/**
 	 * looks to see if thire is a tile next the orginal tile
 	 * @param point the point at which the tile is at
@@ -144,7 +164,7 @@ public class Board {
 			if(_right < point.x+1 ){
 				_right = point.x+1;
 			}
-		
+			PlayerRotation();
 			return true;
 		}
 		return false;
@@ -173,6 +193,22 @@ public class Board {
 	public BaseTile draw(){
 		return _deck.getNextTile();
 	}
+	
+	/**
+	 * finds whos trun it is 
+	 * @return the currents player turn
+	 */
+	public void PlayerRotation(){ 
+		_t++;
+		if(_t == _last){
+			_t = 0;
+		}
+		//return _t;
+	}
+	public int getCurrentPlayerid(){
+		return _t;//the current player
+	}
+	
 	
 	//the geter for the boarned of the board
 	/**

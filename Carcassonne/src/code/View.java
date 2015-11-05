@@ -4,28 +4,25 @@ package code;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Point;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.border.Border;
 
 
 public class View implements Runnable {
@@ -33,6 +30,7 @@ public class View implements Runnable {
 	private JFrame _window;
 	private JPanel _Top;//the top part of the frame
 	private JPanel _Bottom;// the bottom part of the frame
+	private JLabel _PlayerNames;//this is a panel that has the current player name in it   
 	private JPanel _BottomTwo; //below the rotate
 	private JPanel _MeepleWindow;//opens new window on meeple yes button click
 	private Board _board;
@@ -48,6 +46,7 @@ public class View implements Runnable {
 	private JButton _Road; //the button for placing meeple in road
 	private JButton _Field;//the button for placing meeple in field
 	private JFrame _MeepleFrame;//new meeple Jframe
+	private ArrayList<Player> _name;//the name of the play
 	
 	//Place these on bottom Pane for players to see
 	// need to create in view,link to methods and update after action 
@@ -55,6 +54,15 @@ public class View implements Runnable {
 	private JTextPane  _playerTurn; 
 	private JTextPane  _TilesRemaning; 
 	
+	/**
+	 * the view for the board so you can see what you are playing 
+	 * @param m
+	 */
+	public View(Board m,ArrayList<Player> p) {
+		_name= p;
+		_board = m;
+		run();
+	}
 	/**
 	 * the view for the board so you can see what you are playing 
 	 * @param m
@@ -140,6 +148,7 @@ public class View implements Runnable {
 			//put  buttons on the lower half of the board 	to rotate the tiles
 			//have the players name print out on the bottom part of the board
 		}
+		_PlayerNames.setText(_name.get(_board.getCurrentPlayerid()).getName());
 		_window.pack();
 	}
 
@@ -184,13 +193,21 @@ public class View implements Runnable {
 		//could have it so it gives us a scroll pane on the side to start 
 		_Top.setLayout(new GridLayout(3,8));
 		
+		
+		
 		//NEED TO Scale contents of JPanel so the Frame doesn't grow off the screen
 		//Create bottom Jpanel 
+		JPanel tempPanel1 = new JPanel();
+		tempPanel1.setLayout(new GridLayout(2,1));
 		_Bottom= new JPanel();
-		
 		_Bottom.setPreferredSize(new Dimension(100,650));
-		_Bottom.setLayout(new GridLayout(2,2));
-		
+		_Bottom.setLayout(new GridLayout(2,3));//might need to change later
+		//so the current players name will show up as text not a button
+		_PlayerNames = new JLabel();
+		_Bottom.add(_PlayerNames);
+
+		tempPanel1.add(_PlayerNames);
+		tempPanel1.add(_Bottom);
 		//_BottomTwo= new JPanel(); //create JPanel below the rotate panel
 		
 		//_BottomTwo.setPreferredSize(new Dimension(25,650));
@@ -229,17 +246,30 @@ public class View implements Runnable {
 			}
 		});
 		
+		//player order stuff should go here
+		for(Player x: _name)
+		{
+			System.out.println(x.getName());
+			
+		}
+		
+		
+		
+		
+		
+		
 		_LeftMeeple = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
 		_LeftMeeple.setText("Would you like to place a Meeple");
-		_LeftMeeple.addActionListener(new ActionListener(){
+		///did not need becouse it is not a buttion that gets clicked
+		//_LeftMeeple.addActionListener(new ActionListener(){
 		
 			
-			@Override
-			public void actionPerformed(ActionEvent e) {
+			//@Override
+			//public void actionPerformed(ActionEvent e) {
 				//... Ask if you would like to place meeple
-				updateView();
-			}
-		});
+				//updateView();
+			//}
+		//});
 		
 		_RightY = createButton(_Bottom);//maybe _BottomTwo if i can figure out sizing
 		_RightY.setText("Yes");
@@ -283,7 +313,7 @@ public class View implements Runnable {
 		
 		_window.setFocusable(true);
 		_window.add(_scroll, BorderLayout.CENTER);
-		_window.add(_Bottom, BorderLayout.SOUTH);
+		_window.add(tempPanel1, BorderLayout.SOUTH);
 		//_window.add(_scroll, BorderLayout.NORTH);
 		//_window.add(_Bottom, BorderLayout.CENTER);
 		//_window.add(_BottomTwo, BorderLayout.SOUTH);
@@ -296,7 +326,6 @@ public class View implements Runnable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(_pic);
 		updateView();
 }
 

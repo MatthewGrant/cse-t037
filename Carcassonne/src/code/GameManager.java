@@ -1,6 +1,7 @@
 
 package code;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ private Deck deck; //Currently created in Board class should/can we move?
 private BaseTile curTile = null;
 private Board board; 
 
-private static List<Player> players;
+private static ArrayList<Player> players;
 private int turnNumber;
 private Player curPlayer;
 private boolean isGameOver;
@@ -23,17 +24,17 @@ private boolean isGameOver;
  */
 public static void main(String[] args){
 	//enter player names
+	players=new ArrayList<Player>();
+	if(args.length <6){
 
-	new Board();//so we can see the baord
-	
-	System.out.println("The player order is ");//print out the play order
+		System.out.println("The player order is ");//print out the play order
 	for (int i=0; i<args.length; i++) {
 		String playerName = args[i];
 		
 		// add each player to player list 
 		
 		Player player  = new Player(playerName);
-		players.add(player);
+		GameManager.players.add(player);
 		
 		//print player order
 		System.out.println("player " + (i+1) + " is " +args[i]);//prints outs the players names
@@ -41,6 +42,13 @@ public static void main(String[] args){
 		
 	
 		}
+	
+	new Board(players);//so we can see the baord
+	}
+	else
+	{
+		System.out.println("There are too many players. Please remove a player so you can play the game");
+	}
 	}
 
 
@@ -48,7 +56,7 @@ public static void main(String[] args){
 /**
  * @return the player
  */
-public List<Player> getPlayers() {
+public ArrayList<Player> getPlayers() {
 	return players;
 }
 
@@ -57,12 +65,12 @@ public List<Player> getPlayers() {
  * sets the players in the game
  * @param players
  */
-public void setPlayers(List<Player> players) {
+public void setPlayers(ArrayList<Player> players) {
 	this.players = players;
 }
 
 public void newPlayer(Player player) {
-    if (players.size() < 5) {
+    if (players.size() < 6) {
       players.add(player);
     }
   }
