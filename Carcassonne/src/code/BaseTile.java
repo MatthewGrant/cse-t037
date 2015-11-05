@@ -14,6 +14,9 @@ public class BaseTile {
 	Center center = new Center(null);
 	private Point point;
 	
+	//this is for the meeples stuff
+	private Meeple _m;
+	
 	// rotation variable 
 	private int rotation = 0; 	
 
@@ -121,8 +124,34 @@ public class BaseTile {
 		System.out.println(rotation);
 		
 	}
+	//this is for meeple
+	/**
+	 * seting the meeple
+	 * @param m the meeple
+	 * @param l the location it is at
+	 */
+	public void  setMeeple(Meeple m,int l){
+		_m = m;
+		_m.place(l);
+		
+	}
 	
 	
+	/**
+	 * makes sure you have the meeple
+	 * @return the meeple
+	 */
+	public boolean hasMeeple(){
+		return _m!=null;
+	}
+	
+	/**
+	 * gets the meeple
+	 * @return the meeple
+	 */
+	public Meeple getMeeple(){
+		return _m;
+	}
 	
 	//this is the getters for this class
 	/**

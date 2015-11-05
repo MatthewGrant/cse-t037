@@ -18,8 +18,10 @@ public class Board {
 	private int _t=0; //this is for the counting whos player trun it is
 	private int _last;//this is the number coraspinding to the last player in the game
 	//these are stuff for the meeples
+	private ArrayList<Player> _name;
 	
 	/**
+	 * this creatates the names 
 	 * creates the boar this is also a overloaded constuctor
 	 * @param p is the player name
 	 */
@@ -27,7 +29,7 @@ public class Board {
 		
 		_board = new HashMap<Point, BaseTile>();
 		_deck = new Deck(); //MOVE TO GAME MANAGER? 
-		
+		_name = p;
 		//the origin of the board is 0,0 and that is wair i am putting the tile
 		_board.put(new Point(0,0),new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
@@ -177,7 +179,7 @@ public class Board {
 	 */
 	public BaseTile ifTileIsThere(Point p){
 		
-		return _board.get(p);
+		return _board.get(p);//this is the place on the board
 		
 	}
 	
@@ -187,19 +189,29 @@ public class Board {
 	 */
 	public BaseTile nextTile(){
 		return _deck.nextTile();
-	}
-	public boolean MPlace(Meeple m, int l, Point p){
-		BaseTile temp = adjacentTile(m); 
 		
-		if (){
-			
-			
+	}
+	
+	/**
+	 * this lets us place a meeple on the tile
+	 * @param m meeples
+	 * @param l location
+	 * @param p point
+	 * @return if it is true meeple was placed
+	 */
+	public boolean MPlace(Meeple m, int l, Point p){
+		BaseTile temp = ifTileIsThere(p); 
+		if (temp == null){
 			return false;
 		}
-		
-		
-		
-		
+		if(_name.get(_t).getNumMeeples()>0){
+			temp.setMeeple(m, l);
+			_name.get(_t).setNumMeeples(_name.get(_t).getNumMeeples()-1); 
+		}
+		else{
+			return false;
+			
+		}
 		return true;	 
 	}
 	

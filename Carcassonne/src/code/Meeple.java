@@ -4,9 +4,9 @@ import java.awt.Point;
 
 public class Meeple {
 	private final Player player;
-	private Point _point;//the point on the tile at which the meeple will be placed
+	private int _loc;//the point on the tile at which the meeple will be placed
 
-	//need to some haow change the color of the meeple for the differnt players
+	//need to some how change the color of the meeple for the differnt players
 	public Meeple(Player player){
 		this.player = player;
 	}
@@ -15,9 +15,9 @@ public class Meeple {
 	 * so we can place meeples on the tiles
 	 * @param p the point on the tile that we can place
 	 */
-	public void place(Point p) 
+	public void place(int l) 
 	{
-		_point=p;// point on the tile
+		_loc=l;// point on the tile
 	}
 	
 	@Override
