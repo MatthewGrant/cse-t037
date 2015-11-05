@@ -155,7 +155,9 @@ public class View implements Runnable {
 		_PlayerNames.setFont(new Font("Serif", Font.PLAIN, 20));
 		
 		// Tiles left in bag
-		_tileRemaning.setText("Tiles Remaining: ") ;
+		//_tileRemaning.setText("Tiles Remaining: ") ;
+		
+		
 		//add the mepples to the view 
 		
 		_window.pack();
@@ -164,7 +166,6 @@ public class View implements Runnable {
 	public JFrame getFrame(){
 		return _window; 
 	}
-	
 	
 	/**
 	 * @param p is a point for the tiles relaated to the image
@@ -209,7 +210,7 @@ public class View implements Runnable {
 		
 		//Create bottom half of Frame (temp Jpanel) 
 		JPanel tempPanel1 = new JPanel();
-		tempPanel1.setLayout(new GridLayout(2,2));
+		tempPanel1.setLayout(new GridLayout(2,3));
 		_Bottom = new JPanel();
 		//_Bottom.setPreferredSize(new Dimension(100,650));
 		_Bottom.setLayout(new GridLayout(2,3));//might need to change later
@@ -219,8 +220,8 @@ public class View implements Runnable {
 		tempPanel1.add(_PlayerNames);
 
 		// Jlabel for Tiles left in deck
-		_tileRemaning = new JLabel();
-		tempPanel1.add(_tileRemaning);
+		//_tileRemaning = new JLabel();
+		//tempPanel1.add(_tileRemaning);
 		
 		
 		tempPanel1.add(_Bottom);
@@ -267,69 +268,16 @@ public class View implements Runnable {
 			
 		}
 	
-		
-		_LeftMeeple = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
-		_LeftMeeple.setText("Would you like to place a Meeple");
-		///did not need becouse it is not a buttion that gets clicked
-		//_LeftMeeple.addActionListener(new ActionListener(){
-		
-			
-			//@Override
-			//public void actionPerformed(ActionEvent e) {
-				//... Ask if you would like to place meeple
-				//updateView();
-			//}
-		//});
-		//this is the bootem that you push if you would like to place a meeple
-		_RightY = createButton(_Bottom);//maybe _BottomTwo if i can figure out sizing
-		_RightY.setText("Yes");
-		_RightY.addActionListener(new ActionListener(){
-		
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			//	_Where= createButton(_BottomTwo);//... when we figure out meeple position we will ask it now 
-				
-				updateView();
-			}
-		});
-		/*/	_Where.setText("Where would you like to place it");
-			_Where.addActionListener(new ActionListener(){ 
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					_City=createButton(_BottomTwo);//... it would then switch names on the name button and change turns
-					_Field=createButton(_BottomTwo);
-					_Road=createButton(_BottomTwo);
-					updateView();
-				}
-			/*/
-				
-		  
 		      
 		        
-		//});
-		//this is the button you would push if you dont want to push a meeple
-		_RightN = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
-		_RightN.setText("No");
-		_RightN.addActionListener(new ActionListener(){
 		
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				updateView();
-			}
-		});
 		
 		//_Bottom.add(_PlayerNames);
 		_window.setFocusable(true);
-		
 		_window.add(_scroll, BorderLayout.CENTER);
 		_window.add(tempPanel1, BorderLayout.SOUTH);
 		
-		//_window.add(_scroll, BorderLayout.NORTH);
-		//_window.add(_Bottom, BorderLayout.CENTER);
-		//_window.add(_BottomTwo, BorderLayout.SOUTH);
+		
 		_window.pack();
 		_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_window.setVisible(true);
