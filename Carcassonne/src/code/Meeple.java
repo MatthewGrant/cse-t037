@@ -6,7 +6,7 @@ public class Meeple {
 	private final Player player;
 	private Point _point;//the point on the tile at which the meeple will be placed
 
-	
+	//need to some haow change the color of the meeple for the differnt players
 	public Meeple(Player player){
 		this.player = player;
 	}

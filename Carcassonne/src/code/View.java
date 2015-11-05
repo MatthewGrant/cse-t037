@@ -149,12 +149,16 @@ public class View implements Runnable {
 			//have the players name print out on the bottom part of the board
 		}
 		_PlayerNames.setText(_name.get(_board.getCurrentPlayerid()).getName());
+		//add the mepples to the view 
+		
+		
+		
 		_window.pack();
 	}
 
 	
 	/**
-	 * @param p is a point for the tails relaated to the image
+	 * @param p is a point for the tiles relaated to the image
 	 */
 	public void PlaceTile(Point p){
 		_board.place(p, _board.nextTile());
@@ -270,7 +274,7 @@ public class View implements Runnable {
 				//updateView();
 			//}
 		//});
-		
+		//this is the bootem that you push if you would like to place a meeple
 		_RightY = createButton(_Bottom);//maybe _BottomTwo if i can figure out sizing
 		_RightY.setText("Yes");
 		_RightY.addActionListener(new ActionListener(){
@@ -298,6 +302,7 @@ public class View implements Runnable {
 		      
 		        
 		//});
+		//this is the button you would push if you dont want to push a meeple
 		_RightN = createButton(_Bottom); //maybe _BottomTwo if i can figure out sizing
 		_RightN.setText("No");
 		_RightN.addActionListener(new ActionListener(){
@@ -305,7 +310,7 @@ public class View implements Runnable {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//... it would then switch names on the name button and change turns
+				
 				updateView();
 			}
 		});

@@ -8,14 +8,16 @@ import java.awt.Point;
 
 public class Board {
 	private HashMap<Point, BaseTile> _board;
-	private Deck _deck; //MOVE TO GAME MANAGER
+	private Deck _deck; 
 	//these are the bounds for my board
 	private int _upper = 1;
 	private int _lower = -1;
 	private int _right = 3;//to change these number will increase the starting board size so that we can have a scrool pane on the bottom part of the barod
 	private int _left = -3;//both of the 3 could be changed to 1 and the game would still work
+	//these are for rottaiong though player order
 	private int _t=0; //this is for the counting whos player trun it is
 	private int _last;//this is the number coraspinding to the last player in the game
+	//these are stuff for the meeples
 	
 	/**
 	 * creates the boar this is also a overloaded constuctor
@@ -180,12 +182,29 @@ public class Board {
 	}
 	
 	/**
-	 * @return that thire is a next tile in the deck 
+	 * gets the next tile in the deck
+	 * @return the next tile in the deck 
 	 */
 	public BaseTile nextTile(){
 		return _deck.nextTile();
 	}
-	 
+	public boolean MPlace(Meeple m, int l, Point p){
+		BaseTile temp = adjacentTile(m); 
+		
+		if (){
+			
+			
+			return false;
+		}
+		
+		
+		
+		
+		return true;	 
+	}
+	
+	
+	
 	/**
 	 * this is to draw a tile from the deck
 	 * @return the tile that you have just draw
@@ -203,14 +222,18 @@ public class Board {
 		if(_t == _last){
 			_t = 0;
 		}
-		//return _t;
+		
 	}
+	/**
+	 * to get the currrent players name
+	 * @return the player name of who trun it is 
+	 */
 	public int getCurrentPlayerid(){
 		return _t;//the current player
 	}
 	
 	
-	//the geter for the boarned of the board
+	
 	/**
 	 * @return the upper baornded this is when so we can increase the boaed in the view class 
 	 */
