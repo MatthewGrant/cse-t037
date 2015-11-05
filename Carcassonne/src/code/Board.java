@@ -3,6 +3,9 @@ package code;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.swing.JOptionPane;
+
 import java.awt.Point;
 
 
@@ -19,6 +22,7 @@ public class Board {
 	private int _last;//this is the number coraspinding to the last player in the game
 	//these are stuff for the meeples
 	private ArrayList<Player> _name;
+	private View _view;
 	
 	/**
 	 * this creatates the names 
@@ -30,12 +34,13 @@ public class Board {
 		_board = new HashMap<Point, BaseTile>();
 		_deck = new Deck(); //MOVE TO GAME MANAGER? 
 		_name = p;
+		
 		//the origin of the board is 0,0 and that is wair i am putting the tile
 		_board.put(new Point(0,0),new BaseTile(new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD), 
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY)));
-		new View(this,p); 
+		_view =new View(this,p); 
 		
 		_last = p.size();//to get the last player in the game //used for finding whos truns it is 
 	}
@@ -52,7 +57,7 @@ public class Board {
 		        new Edge(Feature.FIELD, Feature.ROAD, Feature.FIELD),
 		        new Edge(Feature.FIELD, Feature.FIELD, Feature.FIELD),
 		        new Edge(Feature.CITY, Feature.CITY, Feature.CITY)));
-		new View(this);//this is so we can run our game 
+		_view = new View(this);//this is so we can run our game 
 		
 		
 	}
@@ -167,6 +172,15 @@ public class Board {
 			}
 			if(_right < point.x+1 ){
 				_right = point.x+1;
+			}
+			_view.updateView();
+			//stuff for placing meeples
+			
+			String[] option = {"Dont Place","NorthWest","North","NorthEast","West","Center","East","SouthWest","South","SouthEast"};//this is the opction we have for placing the meeple
+			int bottemInput = JOptionPane.showOptionDialog(_view.getFrame(), "Would you like to place a Meeple and if so where", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, this);
+			if (bottemInput != 0){
+				//this is the place medion for the meeple
+				MPlace(new Meeple(_name.get(_t)), bottemInput, point);
 			}
 			PlayerRotation();
 			return true;
