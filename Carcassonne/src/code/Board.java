@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
+import java.awt.Color;
 import java.awt.Point;
 
 
@@ -13,8 +14,8 @@ public class Board {
 	private HashMap<Point, BaseTile> _board;
 	private Deck _deck; 
 	//these are the bounds for my board
-	private int _upper = 1;
-	private int _lower = -1;
+	private int _upper = 2;//was 1
+	private int _lower = -2;//was-1
 	private int _right = 3;//to change these number will increase the starting board size so that we can have a scrool pane on the bottom part of the barod
 	private int _left = -3;//both of the 3 could be changed to 1 and the game would still work
 	//these are for rottaiong though player order
@@ -23,7 +24,7 @@ public class Board {
 	//these are stuff for the meeples
 	private ArrayList<Player> _name;
 	private View _view;
-	
+	private Color[] _color = {Color.BLUE, Color.GREEN,Color.YELLOW,Color.RED,Color.BLACK};
 	/**
 	 * this creatates the names 
 	 * creates the boar this is also a overloaded constuctor
@@ -174,13 +175,14 @@ public class Board {
 				_right = point.x+1;
 			}
 			_view.updateView();
+			
 			//stuff for placing meeples
 			
 			String[] option = {"Dont Place","NorthWest","North","NorthEast","West","Center","East","SouthWest","South","SouthEast"};//this is the opction we have for placing the meeple
 			int bottemInput = JOptionPane.showOptionDialog(_view.getFrame(), "Would you like to place a Meeple and if so where", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, this);
 			if (bottemInput != 0){
 				//this is the place medion for the meeple
-				MPlace(new Meeple(_name.get(_t)), bottemInput, point);
+				MPlace(new Meeple(_name.get(_t),_color[_t]), bottemInput, point);
 			}
 			PlayerRotation();
 			return true;

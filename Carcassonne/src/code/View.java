@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Point;
@@ -55,6 +56,7 @@ public class View implements Runnable {
 	private JPanel _Header; 
 	private JTextPane  _playerTurn; 
 	private JTextPane  _TilesRemaning; 
+	//for the diffrent colors we can play of the meeples
 	
 	/**
 	 * the view for the board so you can see what you are playing 
@@ -107,6 +109,7 @@ public class View implements Runnable {
 	 * this updates the view when a new tile is plased on the board
 	 * this also places the first tile
 	 */
+	@SuppressWarnings("serial")
 	public void updateView(){
 		
 		_Top.removeAll();
@@ -115,21 +118,79 @@ public class View implements Runnable {
 		_Top.setLayout(new GridLayout(buttons.length,buttons[0].length));
 		for(int i =0; i<buttons.length  ; i++){// get the size of the coulems
 			for (int j =0; j<buttons[0].length ; j++){//get the size of the rows
-				buttons[i][j]= new JButton();
+				
+				
+				Point p;
+				int x = (_board.get_left()+j);
+				int y = ( _board.get_lower()+i);
+				p = new Point(x,y);
+				BaseTile temp = _board.ifTileIsThere(p);
+				if(temp ==null){
+					buttons[i][j]= new JButton();
+				}
+				else if(temp.hasMeeple()){
+					buttons[i][j]= new JButton(){
+						//drawin ghte meeple on the board
+						@Override
+						public void paintComponent(Graphics g){
+							int x = 0;
+							int y = 0;
+							int mloc = temp.getMeeple().get_loc();
+							
+							if (mloc == 2){
+								x= 30;
+								y=0;
+							}
+							if(mloc == 3 ){
+								x= 60;
+								y =0;
+							}
+							if(mloc == 4 ){
+								x= 0;
+								y =30;
+							}
+							if(mloc == 5 ){
+								x= 30;
+								y =30;
+								
+							}
+							if(mloc == 6 ){
+								x= 60;
+								y =30;
+							}
+							if(mloc == 7 ){
+								x= 0;
+								y =60;
+							}
+							if(mloc == 8 ){
+								x= 30;
+								y =60;
+							}
+							if(mloc == 9 ){
+								x= 60;
+								y =60;
+							}
+							super.paintComponent(g);
+							g.setColor(temp.getMeeple().get_color());
+							g.fillOval(x, y, 21, 21);
+						}
+					};
+				}
+				else{
+					buttons[i][j]= new JButton();
+				}
+				buttons[i][j].setPreferredSize(new Dimension(81,81));
 				
 				//Set button boarder to empty
 				//if we put this back in we have to change the bounder size and grid size so that the scrool pane will be on the bottom agian
 				//Border emptyBorder = BorderFactory.createEmptyBorder();
 				//buttons[i][j].setBorder(emptyBorder);
-				Point p;
-				int x = (_board.get_left()+j);
-				int y = ( _board.get_lower()+i);
-				p = new Point(x,y);
+				
 				
 				buttons[i][j].addActionListener(new ButtonListener(p,this));
 				_Top.add(buttons[i][j]);
 				
-				BaseTile temp = _board.ifTileIsThere(p);
+				
 				if( temp!= null ){
 					Point loc = temp.getPoint();
 					
@@ -194,7 +255,7 @@ public class View implements Runnable {
 		//Jframe
 		_window = new JFrame("Carcassonne");
 		//set JFrame to dimensions
-		_window.setPreferredSize(new Dimension(800, 800));
+		//_window.setPreferredSize(new Dimension(800, 800));
 		// 2 rows by 1 column
 		_window.setLayout(new GridLayout(2,1));
 		
