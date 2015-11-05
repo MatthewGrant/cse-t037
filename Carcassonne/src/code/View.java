@@ -172,14 +172,13 @@ public class View implements Runnable {
 							}
 							super.paintComponent(g);
 							g.setColor(temp.getMeeple().get_color());
-							g.fillOval(x, y, 21, 21);
+							g.fillOval(x+16, y+5, 21, 21);
 						}
 					};
 				}
 				else{
 					buttons[i][j]= new JButton();
 				}
-				buttons[i][j].setPreferredSize(new Dimension(81,81));
 				
 				//Set button boarder to empty
 				//if we put this back in we have to change the bounder size and grid size so that the scrool pane will be on the bottom agian
@@ -255,7 +254,7 @@ public class View implements Runnable {
 		//Jframe
 		_window = new JFrame("Carcassonne");
 		//set JFrame to dimensions
-		//_window.setPreferredSize(new Dimension(800, 800));
+		_window.setPreferredSize(new Dimension(800, 800));
 		// 2 rows by 1 column
 		_window.setLayout(new GridLayout(2,1));
 		
